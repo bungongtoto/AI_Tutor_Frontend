@@ -1,21 +1,22 @@
+import { Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout";
+import Home from "./features/welcome/Home";
+import Login from "./features/auth/Login";
+import SignUp from "./features/auth/SignUp";
+import ResestPWD from "./features/auth/ResestPWD";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="auth">
+          <Route index element={<Login />} />
+          <Route path="signup" element={<SignUp />} />
+          <Route path="resetpassword" element={<ResestPWD />} />
+        </Route>
+      </Route>
+    </Routes>
   );
 }
 
