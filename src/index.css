@@ -53,6 +53,14 @@
   animation: floatAnimation 3s infinite;
 }
 
+.hover-effect {
+  transition: transform 0.3s ease-in-out;
+}
+
+.hover-effect:hover {
+  transform: scale(1.1);
+}
+
 body {
   font-family: 'Roboto', sans-serif;
   height: 100vh;
@@ -99,7 +107,7 @@ body {
 }
 
 .second_header{
-  background-image: url("./images/Home_h2_cover.png");
+  /* background-image: url("./images/Home_h2_cover.png"); */
   background-size: cover;
   min-height: 50vh;
 }

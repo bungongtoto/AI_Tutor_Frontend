@@ -1,11 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import 'react-lazy-load-image-component/src/effects/blur.css';
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import logo from "../../assets/images/AI_TUTOR_Logo.png";
+import gmail_logo from "../../assets/images/gmail_logo.png"
+ 
 const Login = () => {
   return (
     <main className="login_page">
       <div className="login_container">
-       <img src="./img/AI_TUTOR_Logo.png" className="floating-image" width={"150px"} height={"50px"} alt="" />
+        <LazyLoadImage src={logo} className="floating-image" width={"150px"} height={"50px"} alt="" />
+       {/* <img src="./img/AI_TUTOR_Logo.png" className="floating-image" width={"150px"} height={"50px"} alt="" /> */}
         <form className="login_form" action="">
           <div className="input_container">
             <label htmlFor="email" className="visually-hidden">Email</label>
@@ -19,7 +24,8 @@ const Login = () => {
           <button className="login-button">Login</button>
           <p>OR</p>
           <div>
-          <img src="./img/gmail_logo.png" width={50} height={50} alt="" />
+          <LazyLoadImage className="hover-effect" src={gmail_logo} width={50} height={50} alt="" />
+          {/* <img className="hover-effect" src="./img/gmail_logo.png" width={50} height={50} alt="" /> */}
           </div>
           <p>Forgot password ? <Link to={"/auth/resetpassword"}>Reset Password</Link></p>
           <p>Dont have an account ? <Link to={"/auth/signup"}>Sign Up</Link></p>
