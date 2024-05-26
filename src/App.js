@@ -4,6 +4,8 @@ import Home from "./features/welcome/Home";
 import Login from "./features/auth/Login";
 import SignUp from "./features/auth/SignUp";
 import ResestPWD from "./features/auth/ResestPWD";
+import DashLayout from "./components/DashLayout";
+import Dashboard from "./features/dashboard/Dashboard";
 
 function App() {
   return (
@@ -15,6 +17,10 @@ function App() {
           <Route path="signup" element={<SignUp />} />
           <Route path="resetpassword" element={<ResestPWD />} />
         </Route>
+      </Route>
+
+      <Route path="/dash" element={<DashLayout />}>
+        <Route index element={<Dashboard />} />
       </Route>
     </Routes>
   );

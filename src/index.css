@@ -161,3 +161,12 @@ body {
   background-color: #0056b3;
 }
 
+.app{
+  display: flex;
+  flex-direction: row;
+}
+
+.dash-container{
+  width: 100%;
+}
+
