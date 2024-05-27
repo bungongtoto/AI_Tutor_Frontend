@@ -21,11 +21,6 @@ const ResestPWD = () => {
             <input className="big_input" type="password" id="password" placeholder="Password" />
           </div>
 
-          <div className="input_container">
-            <label htmlFor="confirm_password" className="visually-hidden">Confrim Password</label>
-            <input className="big_input" type="password" id="confirm_password" placeholder="Password" />
-          </div>
-
           <button className="login-button">Reset Password</button>
 
           <p>Already have an account ? <Link to={"/auth/"}> Login</Link></p>

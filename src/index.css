@@ -23,6 +23,19 @@
     --INPUT-INVALID: #F00;
 }
 
+.errmsg {
+  display: inline-block;
+  background-color: var(--TABLE-BGCOLOR);
+  color: var(--ERROR);
+  padding: 0.25em;
+  margin-bottom: 0.5em;
+}
+
+.errmsg a:any-link {
+  color: var(--ERROR);
+  text-decoration: underline;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -93,10 +106,6 @@ body {
   align-items: center;
 }
 
-.home_footer{
-  height: 10vh;
-  border-top: 1px solid var(--BORDER-COLOR);
-}
 
 .home_footer_container{
   padding: 1rem ;
@@ -104,6 +113,12 @@ body {
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
+}
+
+.home_footer{
+  height: 10vh;
+  position: sticky;
+  border-top: 1px solid var(--BORDER-COLOR);
 }
 
 .second_header{
@@ -170,3 +185,21 @@ body {
   width: 100%;
 }
 
+
+.password-input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.password-input-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.show-password-button {
+  margin-left: 8px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: blue;
+}

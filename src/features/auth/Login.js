@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import logo from "../../assets/images/AI_TUTOR_Logo.png";
-import gmail_logo from "../../assets/images/gmail_logo.png"
+// import gmail_logo from "../../assets/images/gmail_logo.png"
  
 const Login = () => {
   const navigate = useNavigate();
@@ -26,11 +26,10 @@ const Login = () => {
           </div>
 
           <button type="submit" className="login-button">Login</button>
-          <p>OR</p>
+          {/* <p>OR</p>
           <div>
           <LazyLoadImage className="hover-effect" src={gmail_logo} width={50} height={50} alt="" />
-          {/* <img className="hover-effect" src="./img/gmail_logo.png" width={50} height={50} alt="" /> */}
-          </div>
+          </div> */}
           <p>Forgot password ? <Link to={"/auth/resetpassword"}>Reset Password</Link></p>
           <p>Dont have an account ? <Link to={"/auth/signup"}>Sign Up</Link></p>
         </form>
