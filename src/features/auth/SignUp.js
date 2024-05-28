@@ -45,9 +45,7 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log("1 st");
       await signUp({ email, password }).unwrap();
-      console.log("2 st");
       setEmail("");
       setPassword("");
       enqueueSnackbar("Signed Up Successfully", { variant: "success" });
