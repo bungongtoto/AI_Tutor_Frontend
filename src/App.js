@@ -6,21 +6,36 @@ import SignUp from "./features/auth/SignUp";
 import ResestPWD from "./features/auth/ResestPWD";
 import DashLayout from "./components/DashLayout";
 import Dashboard from "./features/dashboard/Dashboard";
+import PersistLogin from "./features/auth/PersistLogin";
+import Prefetch from "./features/auth/Prefetch";
+import Admin from "./features/admin/Admin";
+import Exams from "./features/exams/Exams";
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="auth">
-          <Route index element={<Login />} />
-          <Route path="signup" element={<SignUp />} />
-          <Route path="resetpassword" element={<ResestPWD />} />
+      <Route>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="auth">
+            <Route index element={<Login />} />
+            <Route path="signup" element={<SignUp />} />
+            <Route path="resetpassword" element={<ResestPWD />} />
+          </Route>
         </Route>
-      </Route>
-
-      <Route path="/dash" element={<DashLayout />}>
-        <Route index element={<Dashboard />} />
+        <Route element={<PersistLogin />}>
+          <Route element={<Prefetch />}>
+            <Route path="/dash" element={<DashLayout />}>
+              <Route index element={<Dashboard />} />
+              <Route path="admin">
+                <Route index element={<Admin />} />
+                <Route path="exams">
+                  <Route index element={<Exams/>} />
+                </Route>
+              </Route>
+            </Route>
+          </Route>
+        </Route>
       </Route>
     </Routes>
   );

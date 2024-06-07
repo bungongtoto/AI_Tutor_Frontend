@@ -13,6 +13,7 @@
     --COLOR: #FFF;
     --ERROR: firebrick;
     --INACTIVE: lightgray;
+    --ACTIVE: rgb(253, 13, 13) ;
     --LINK-COLOR: whitesmoke;
     --LINK-HOVER: rgba(245, 245, 245, 0.9);
     --NOTE-BGCOLOR: hsla(240, 64%, 27%, 0.65);
@@ -177,13 +178,13 @@ body {
 }
 
 .app{
-  display: grid;
+  display: flex;
   height: 100vh;
 }
 
 .dash-container{
-  height: 100vh;
-  background-color: blanchedalmond;
+  flex: 1;
+  background-color: white;
   
 }
 
@@ -210,4 +211,147 @@ body {
   display: flex;
   justify-content: space-around;
   width: 10vw;
+}
+
+/* =========================SideBar==================================== */
+.sidebar{
+  display:  flex;
+  flex-direction: column;
+  width: 15vw;
+  height: 100vh;
+  background-color: azure;
+  border-right: solid 2px var(--BORDER-COLOR);
+
+}
+
+.sidebar-mobile {
+  display:  flex;
+  flex-direction: column;
+  width: 4vw;
+  height: 100vh;
+  background-color: azure;
+  border-right: solid 2px var(--BORDER-COLOR);
+}
+
+nav .ul-item {
+  display: flex;
+  flex-direction: column;
+  margin-block: 0.5rem;
+  list-style: none;
+}
+
+nav .ul-item.oicon a {
+  display: none;
+}
+
+
+
+nav .ul-item li {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  cursor: pointer;
+  padding-block: 1.2rem;
+  margin-block: 0.2rem;
+}
+
+nav .ul-item li:hover{
+  background-color: aqua;
+}
+
+.selected {
+  background-color: aqua;
+}
+
+nav .ul-item li .icon {
+  color: blue;
+  margin-inline: 1rem;
+  font-size: 30px;
+}
+
+nav .ul-item li a {
+  text-decoration: none;
+  text-transform: uppercase;
+  border-left: 1px solid slategray;
+  padding: .3rem;
+}
+
+.menu-icon {
+  margin-inline: 1rem;
+}
+
+.menu-icon .menu {
+  color: blue;
+  margin-block: 1rem;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+nav .ul-item li:hover{
+  transition: 1s ease;
+}
+
+/* ======================================================== */
+
+.content_container{
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dash_header{
+  padding: 1.2rem;
+  height: 6vh;
+  width:  100%;
+  background-color: azure;
+  border-bottom: solid 2px var(--BORDER-COLOR);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* ================================================================== */
+.admin_2nd_container{
+  display: flex;
+  width: 80vw;
+  justify-content: space-between;
+}
+.admin_stats_container{
+  width: 80vw;
+  height: 55vh;
+  background-color: blue;
+  margin-bottom: 1.5rem;
+}
+.admin_nav_container{
+  width: 22vw;
+  height: 30vh;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1em;
+}
+.admin_chart_container{
+  width: 55vw;
+  height: 30vh;
+  background-color: pink;
+}
+
+.admin_nav_button {
+  text-decoration: none;
+  color: inherit;
+  display: grid;
+  place-items: center;
+  background-color: white;
+  border: #007bff solid 1px;
+}
+
+.admin_nav_button .icon{
+  color: inherit;
+  font-size: 2.5rem;
+}
+
+.admin_nav_button:hover {
+  color: azure;
+  background-color: blue;
 }

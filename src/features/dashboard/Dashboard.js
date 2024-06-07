@@ -1,11 +1,15 @@
-import React from 'react'
+import React from "react";
+import DashHeader from "../../components/DashHeader";
 
 const Dashboard = () => {
   return (
-   <div>
-    <p>Dashboard page</p>
-   </div>
-  )
-}
+    <>
+      <DashHeader />
+      <div className="content_container">
+        <p>Dashboard page</p>
+      </div>
+    </>
+  );
+};
 
-export default Dashboard
+export default Dashboard;
