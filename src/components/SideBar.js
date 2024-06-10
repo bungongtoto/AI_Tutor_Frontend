@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   IoMdImage,
   IoIosSchool,
@@ -7,13 +7,20 @@ import {
   IoMdSettings,
   IoMdMenu,
   IoMdClose,
-  IoIosBody
+  IoIosBody,
 } from "react-icons/io";
 
 // Item component to display each menu item in the sidebar
 const Item = ({ title, to, icon, selected, setSelected }) => {
+  const navigate = useNavigate();
   return (
-    <li className={selected === title ? "selected" : ""} onClick={() => setSelected(title)} >
+    <li
+      className={selected === title ? "selected" : ""}
+      onClick={() => {
+        setSelected(title);
+        navigate(to)
+      }}
+    >
       {icon}
       <Link to={to}>{title}</Link>
     </li>
@@ -60,7 +67,7 @@ const SideBar = () => {
             selected={selected}
             setSelected={setSelected}
           />
-           <Item
+          <Item
             title="My Courses"
             icon={<IoIosBulb className="icon" />}
             to={""}

@@ -1,5 +1,5 @@
 import React from "react";
-import { IoMdReturnRight } from "react-icons/io";
+import { IoIosExit } from "react-icons/io";
 import { useSendLogoutMutation } from "../features/auth/authApiSlice";
 import { useNavigate } from "react-router-dom";
 import { PulseLoader } from "react-spinners";
@@ -26,7 +26,7 @@ const DashHeader = () => {
       ) : (
        
           <button onClick={onLogoutClicked}> Logout
-            <IoMdReturnRight />
+            <IoIosExit />
           </button>
       )}
     </header>

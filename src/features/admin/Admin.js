@@ -1,11 +1,11 @@
 import React from "react";
-import DashHeader from "../../components/DashHeader";
 import {
   IoIosGlobe,
   IoIosListBox,
   IoLogoBuffer,
   IoMdAlbums,
-  IoIosContacts 
+  IoIosContacts, 
+  IoMdStats 
 } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 
@@ -22,7 +22,6 @@ const AdminNavTile = ({ title, to, icon }) => {
 const Admin = () => {
   return (
     <>
-      <DashHeader />
       <div className="content_container">
         <div className="admin_stats_container"></div>
         <div className="admin_2nd_container">
@@ -50,6 +49,11 @@ const Admin = () => {
             <AdminNavTile
               title={"Questions"}
               icon={<IoIosListBox className="icon" />}
+              to={""}
+            />
+            <AdminNavTile
+              title={"Statistics"}
+              icon={<IoMdStats className="icon" />}
               to={""}
             />
           </div>
