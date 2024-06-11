@@ -9,10 +9,12 @@ import Dashboard from "./features/dashboard/Dashboard";
 import PersistLogin from "./features/auth/PersistLogin";
 import Prefetch from "./features/auth/Prefetch";
 import Admin from "./features/admin/Admin";
-import Exams from "./features/exams/Exams";
+import ExamsList from "./features/exams/ExamsList";
+import NewExamForm from "./features/exams/NewExamForm";
 import Users from "./features/users/Users";
 import NewUserForm from "./features/users/NewUserForm";
 import EditUser from "./features/users/EditUser";
+import EditExam from "./features/exams/EditExam";
 
 function App() {
   return (
@@ -38,7 +40,9 @@ function App() {
                   <Route path="new" element={<NewUserForm />} />
                 </Route>
                 <Route path="exams">
-                  <Route index element={<Exams />} />
+                  <Route index element={<ExamsList />} />
+                  <Route path=":id" element={<EditExam />} />
+                  <Route path="new" element={<NewExamForm />} />
                 </Route>
               </Route>
             </Route>

@@ -1,18 +1,18 @@
-import React from "react";
-import { useGetUsersQuery } from "./usersApiSlice";
+import React from 'react'
+import { useGetExamsQuery } from './examsApiSlice';
 import { PulseLoader } from "react-spinners";
-import User from "./User";
-import { IoMdPersonAdd } from "react-icons/io";
+import Exam from "./Exam";
+import { IoMdAddCircleOutline } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 
-const Users = () => {
+const ExamsList = () => {
   const {
-    data: users,
+    data: exams,
     isLoading,
     isSuccess,
     isError,
     error,
-  } = useGetUsersQuery("usersList", {
+  } = useGetExamsQuery("examsList", {
     pollingInterval: 60000,
     refetchOnFocus: true,
     refetchOnMountOrArgChange: true,
@@ -20,8 +20,8 @@ const Users = () => {
   
   const navigate = useNavigate();
 
-  const onAddUserClicked = () => {
-    navigate("/dash/admin/users/new");
+  const onAddExamClicked = () => {
+    navigate("/dash/admin/exams/new");
   }
 
   let content;
@@ -33,20 +33,17 @@ const Users = () => {
   }
 
   if (isSuccess) {
-    const { ids } = users;
+    const { ids } = exams;
 
     const tableContent =
-      ids?.length && ids.map((userId) => <User key={userId} userId={userId} />);
+      ids?.length && ids.map((examId) => <Exam key={examId} examId={examId} />);
 
     content = (
-      <table className="table table--users">
+      <table className="table_exam ">
         <thead className="table__thead">
           <tr>
             <th scope="col" className="table__th user__username">
-              Email
-            </th>
-            <th scope="col" className="table__th user__roles">
-              Roles
+              Title
             </th>
             <th scope="col" className="table__th user__edit">
               Edit
@@ -61,14 +58,14 @@ const Users = () => {
     <>
       <div className="content_container">
         <div className="top_buttons_container">
-          <button onClick={onAddUserClicked}>
-            <IoMdPersonAdd className="icon" />
+          <button onClick={onAddExamClicked}>
+            <IoMdAddCircleOutline className="icon" />
           </button>
         </div>
         {content}
       </div>
     </>
   );
-};
+}
 
-export default Users;
+export default ExamsList
