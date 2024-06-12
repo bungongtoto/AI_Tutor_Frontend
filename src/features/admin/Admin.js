@@ -39,7 +39,7 @@ const Admin = () => {
             <AdminNavTile
               title={"Courses"}
               icon={<IoLogoBuffer className="icon" />}
-              to={""}
+              to={"/dash/admin/courses"}
             />
             <AdminNavTile
               title={"Papers"}
