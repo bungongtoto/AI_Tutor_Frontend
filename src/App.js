@@ -16,6 +16,7 @@ import NewUserForm from "./features/users/NewUserForm";
 import EditUser from "./features/users/EditUser";
 import EditExam from "./features/exams/EditExam";
 import CoursesList from "./features/courses/CoursesList";
+import NewCourseForm from "./features/courses/NewCourseForm";
 
 function App() {
   return (
@@ -48,7 +49,7 @@ function App() {
                 <Route path="courses">
                   <Route index element={<CoursesList />} />
                   <Route path=":id" element={<EditExam />} />
-                  <Route path="new" element={<NewExamForm />} />
+                  <Route path="new" element={<NewCourseForm />} />
                 </Route>
               </Route>
             </Route>
