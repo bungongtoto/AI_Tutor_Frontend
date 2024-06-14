@@ -44,7 +44,7 @@ const Admin = () => {
             <AdminNavTile
               title={"Papers"}
               icon={<IoMdAlbums className="icon" />}
-              to={""}
+              to={"/dash/admin/papers"}
             />
             <AdminNavTile
               title={"Questions"}

@@ -18,6 +18,7 @@ import EditExam from "./features/exams/EditExam";
 import CoursesList from "./features/courses/CoursesList";
 import NewCourseForm from "./features/courses/NewCourseForm";
 import EditCourse from "./features/courses/EditCourse";
+import PapersList from "./features/papers/PapersList";
 
 function App() {
   return (
@@ -49,6 +50,11 @@ function App() {
                 </Route>
                 <Route path="courses">
                   <Route index element={<CoursesList />} />
+                  <Route path=":id" element={<EditCourse />} />
+                  <Route path="new" element={<NewCourseForm />} />
+                </Route>
+                <Route path="papers">
+                  <Route index element={<PapersList />} />
                   <Route path=":id" element={<EditCourse />} />
                   <Route path="new" element={<NewCourseForm />} />
                 </Route>
