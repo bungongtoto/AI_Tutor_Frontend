@@ -53,13 +53,18 @@ const QuestionsList = () => {
 
   let content;
 
-  if (isLoading || isLoadingExams || isLoadingCourses || isLoadingPapers) content = <PulseLoader color={"blue"} />;
+  if (isLoading || isLoadingExams || isLoadingCourses || isLoadingPapers)
+    content = <PulseLoader color={"blue"} />;
 
   if (isError || isErrorExam || isErrorCourse || isErrorPaper) {
-    content = <p className="errmsg">{error?.data?.message ||
-      errorExam?.data?.message ||
-      errorCourse?.data?.message ||
-      errorPaper?.data?.message}</p>;
+    content = (
+      <p className="errmsg">
+        {error?.data?.message ||
+          errorExam?.data?.message ||
+          errorCourse?.data?.message ||
+          errorPaper?.data?.message}
+      </p>
+    );
   }
 
   let examsListOptions;
@@ -120,14 +125,27 @@ const QuestionsList = () => {
         ));
   }
 
-  if (isSuccess) {
+  if (isSuccess && !isLoadingPapers) {
+    let tableContent;
     const { ids } = questions;
-
-    const tableContent =
-      ids?.length &&
-      ids.map((questionId) => (
-        <Question key={questionId} questionId={questionId} />
-      ));
+    
+    const questionsObj =
+      ids?.length && ids.map((questionId) => questions?.entities[questionId]);
+    tableContent =
+      questionsObj?.length &&
+      questionsObj
+        .filter((questionObj) => {
+          // Filter based on paperId if it has a value
+          if (selectedPaper) {
+           
+            return questionObj.paperId === selectedPaper;
+          }
+          
+          return true; // Return all classes if sectionId is not provided
+        })
+        .map((questionObj) => (
+          <Question key={questionObj.id} questionId={questionObj.id} />
+        ));
 
     content = (
       <table className="table_questions ">
@@ -158,59 +176,59 @@ const QuestionsList = () => {
     <>
       <div className="content_container">
         <div className="top_buttons_container">
-        {isSuccessCourses && (
-          <div className="class_container">
-            <div className="input-container">
-              <label htmlFor="exams" className="dropdown">
-                {" "}
-                Exams:{" "}
-              </label>
-              <select
-                id="exams"
-                placeholder="Select the Exam"
-                value={selectedExam}
-                onChange={handleExamChange}
-                required
-              >
-                <option value="">Select the Exam</option>
-                {examsListOptions}
-              </select>
-            </div>
+          {isSuccessCourses && (
+            <div className="class_container">
+              <div className="input-container">
+                <label htmlFor="exams" className="dropdown">
+                  {" "}
+                  Exams:{" "}
+                </label>
+                <select
+                  id="exams"
+                  placeholder="Select the Exam"
+                  value={selectedExam}
+                  onChange={handleExamChange}
+                  required
+                >
+                  <option value="">Select the Exam</option>
+                  {examsListOptions}
+                </select>
+              </div>
 
-            <div className="input-container">
-              <label htmlFor="courseName" className="dropdown">
-                {" "}
-                Course:{" "}
-              </label>
-              <select
-                id="courseName"
-                placeholder="Select the courseName"
-                required
-                value={selectedCourse}
-                onChange={handleCourseChange}
-              >
-                <option>Select A Course</option>
-                {coursesListOptions}
-              </select>
+              <div className="input-container">
+                <label htmlFor="courseName" className="dropdown">
+                  {" "}
+                  Course:{" "}
+                </label>
+                <select
+                  id="courseName"
+                  placeholder="Select the courseName"
+                  required
+                  value={selectedCourse}
+                  onChange={handleCourseChange}
+                >
+                  <option>Select A Course</option>
+                  {coursesListOptions}
+                </select>
+              </div>
+              <div className="input-container">
+                <label htmlFor="courseName" className="dropdown">
+                  {" "}
+                  Paper:{" "}
+                </label>
+                <select
+                  id="courseName"
+                  placeholder="Select the Paper Year"
+                  required
+                  value={selectedPaper}
+                  onChange={handlePaperChange}
+                >
+                  <option>Select A Course</option>
+                  {papersListOptions}
+                </select>
+              </div>
             </div>
-            <div className="input-container">
-              <label htmlFor="courseName" className="dropdown">
-                {" "}
-                Paper:{" "}
-              </label>
-              <select
-                id="courseName"
-                placeholder="Select the Paper Year"
-                required
-                value={selectedPaper}
-                onChange={handlePaperChange}
-              >
-                <option>Select A Course</option>
-                {papersListOptions}
-              </select>
-            </div>
-          </div>
-        )}
+          )}
         </div>
         {content}
       </div>
