@@ -49,7 +49,7 @@ const Admin = () => {
             <AdminNavTile
               title={"Questions"}
               icon={<IoIosListBox className="icon" />}
-              to={""}
+              to={"/dash/admin/questions"}
             />
             <AdminNavTile
               title={"Statistics"}

@@ -21,6 +21,7 @@ import EditCourse from "./features/courses/EditCourse";
 import PapersList from "./features/papers/PapersList";
 import NewPaperForm from "./features/papers/NewPaperForm";
 import EditPaper from "./features/papers/EditPaper";
+import QuestionsList from "./features/questions/QuestionsList";
 
 function App() {
   return (
@@ -57,6 +58,11 @@ function App() {
                 </Route>
                 <Route path="papers">
                   <Route index element={<PapersList />} />
+                  <Route path=":id" element={<EditPaper />} />
+                  <Route path="new" element={<NewPaperForm />} />
+                </Route>
+                <Route path="questions">
+                  <Route index element={<QuestionsList />} />
                   <Route path=":id" element={<EditPaper />} />
                   <Route path="new" element={<NewPaperForm />} />
                 </Route>
