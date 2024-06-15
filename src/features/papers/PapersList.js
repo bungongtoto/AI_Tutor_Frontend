@@ -49,7 +49,7 @@ const PapersList = () => {
                   Course Title
                 </th>
                 <th scope="col" className="table__th user__edit">
-                  Edit
+                  Actions
                 </th>
               </tr>
             </thead>

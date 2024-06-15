@@ -367,6 +367,12 @@ tr {
   display: contents;
 }
 
+.cell__action{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5em;
+}
+
 .table {
   font-size: 1rem;
   width: 100%;
