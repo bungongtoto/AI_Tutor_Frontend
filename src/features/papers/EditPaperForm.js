@@ -1,15 +1,24 @@
-import React from "react";
 import { useState, useEffect } from "react";
-import { useAddNewPaperMutation } from "./papersApiSlice";
+import {
+  useUpdatePaperMutation,
+  useDeletePaperMutation,
+} from "./papersApiSlice";
+
 import { useGetExamsQuery } from "../exams/examsApiSlice";
 import { useGetCoursesQuery } from "../courses/coursesApiSlice";
 import { useNavigate } from "react-router-dom";
-import { IoIosSave } from "react-icons/io";
+import { IoMdTrash, IoIosSave } from "react-icons/io";
 import { PulseLoader } from "react-spinners";
 
-const NewPaperForm = () => {
-  const [addNewPaper, { isLoading, isSuccess, isError, error }] =
-    useAddNewPaperMutation();
+const EditPaperForm = ({ paper }) => {
+  const [updatePaper, { isLoading, isSuccess, isError, error }] =
+    useUpdatePaperMutation();
+
+  const [
+    deletePaper,
+    { isSuccess: isDelSuccess, isError: isDelError, error: delerror },
+  ] = useDeletePaperMutation();
+
   const {
     data: exams,
     isLoading: isLoadingExams,
@@ -28,32 +37,38 @@ const NewPaperForm = () => {
 
   const navigate = useNavigate();
 
-  const [year, setYear] = useState("");
+  const [year, setYear] = useState(paper.year);
   const [selectedExam, setSelectedExam] = useState("");
-  const [selectedCourse, setSelectedCourse] = useState("");
-
+  const [selectedCourse, setSelectedCourse] = useState(paper.courseId);
 
   useEffect(() => {
-    if (isSuccess) {
+    console.log(isSuccess);
+    if (isSuccess || isDelSuccess) {
       setYear("");
       setSelectedExam("");
       setSelectedCourse("");
-      navigate("/dash/admin/courses");
+      navigate("/dash/admin/papers");
     }
-  }, [isSuccess, navigate]);
+  }, [isSuccess, isDelSuccess, navigate]);
 
   const onYearChanged = (e) => setYear(e.target.value);
   const handleExamChange = (e) => setSelectedExam(e.target.value);
   const handleCourseChange = (e) => setSelectedCourse(e.target.value);
 
-  const canSave = !isLoading && !isLoadingExams && !isLoadingCourses;
-
-  const onSaveCourseClicked = async (e) => {
-    e.preventDefault();
-    if (canSave) {
-      await addNewPaper({ year, courseId: selectedCourse });
-    }
+  const onSaveExamClicked = async (e) => {
+    await updatePaper({
+      id: paper.id,
+      year,
+      courseId: selectedCourse,
+      questions: paper.questions,
+    });
   };
+
+  const onDeleteExamClicked = async () => {
+    await deletePaper({ id: paper.id });
+  };
+
+  const canSave = !isLoading && !isLoadingExams && !isLoadingCourses;
 
   let examsListOptions;
   if (isSuccessExams) {
@@ -76,33 +91,55 @@ const NewPaperForm = () => {
       ids?.length && ids.map((courseId) => courses?.entities[courseId]);
     coursesListOptions =
       coursesObj?.length &&
-      coursesObj.filter((courseObj) => {
-        // Filter based on selectedExam if it has a value
-        if (selectedExam) {
-          return courseObj.examId === selectedExam;
-        }
-        return true; // Return all classes if sectionId is not provided
-      })
-      .map((courseObj) => (
-        <option key={courseObj.id} value={courseObj.id}>
-          {courseObj.title}
-        </option>
-      ));
+      coursesObj
+        .filter((courseObj) => {
+          // Filter based on selectedExam if it has a value
+          if (selectedExam) {
+            return courseObj.examId === selectedExam;
+          }
+          return true; // Return all classes if sectionId is not provided
+        })
+        .map((courseObj) => (
+          <option key={courseObj.id} value={courseObj.id}>
+            {courseObj.title}
+          </option>
+        ));
   }
 
-  const errClass = isError || isErrorExam || isErrorCourse ? "errmsg" : "offscreen";
-  const errContent = (error?.data?.message || errorExam?.data?.message || errorCourse?.data?.message) ?? "";
+  const errClass =
+    isError || isDelError || isErrorExam || isErrorCourse
+      ? "errmsg"
+      : "offscreen";
+
+  const errContent =
+    (error?.data?.message ||
+      delerror?.data?.message ||
+      errorExam?.data?.message ||
+      errorCourse?.data?.message) ??
+    "";
 
   const content = (
-    <div className="content_container create_form">
+    <>
       <p className={errClass}>{errContent}</p>
 
-      <form className="form" onSubmit={onSaveCourseClicked}>
+      <form className="form" onSubmit={(e) => e.preventDefault()}>
         <div className="form__title-row">
-          <h2>New Paper</h2>
+          <h2>Edit Paper</h2>
           <div className="form__action-buttons">
-            <button className="icon-button" title="Save" disabled={!canSave}>
+            <button
+              className="icon-button"
+              title="Save"
+              onClick={onSaveExamClicked}
+              disabled={!canSave}
+            >
               <IoIosSave />
+            </button>
+            <button
+              className="icon-button"
+              title="Delete"
+              onClick={onDeleteExamClicked}
+            >
+              <IoMdTrash />
             </button>
           </div>
         </div>
@@ -158,13 +195,15 @@ const NewPaperForm = () => {
               </div>
           </div>
         )}
-
-        
       </form>
-    </div>
+    </>
   );
 
-  return <>{isLoading || isLoadingCourses ||isLoadingExams ? <PulseLoader color="blue" /> : content}</>;
+  return (
+    <div className="content_container">
+      {isLoading || isLoadingCourses || isLoadingExams ? <PulseLoader color="blue" /> : content}
+    </div>
+  );
 };
 
-export default NewPaperForm;
+export default EditPaperForm;
