@@ -23,6 +23,7 @@ import NewPaperForm from "./features/papers/NewPaperForm";
 import EditPaper from "./features/papers/EditPaper";
 import QuestionsList from "./features/questions/QuestionsList";
 import NewQuestionForm from "./features/questions/NewQuestionForm";
+import EditQuestion from "./features/questions/EditQuestion";
 
 function App() {
   return (
@@ -64,7 +65,7 @@ function App() {
                 </Route>
                 <Route path="questions">
                   <Route index element={<QuestionsList />} />
-                  <Route path=":id" element={<EditPaper />} />
+                  <Route path=":id" element={<EditQuestion />} />
                   <Route path="new/:paperId" element={<NewQuestionForm />} />
                 </Route>
               </Route>
