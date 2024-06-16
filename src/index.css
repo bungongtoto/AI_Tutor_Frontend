@@ -6,6 +6,29 @@
     box-sizing: border-box;
 }
 
+#root {
+  height: 100%;
+}
+
+.app {
+  display: flex;
+  height: 100vh;
+}
+
+.dash-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow: hidden; /* Prevent overflow to ensure only the outlet container scrolls */
+}
+
+.outlet-container {
+  flex-grow: 1;
+  overflow-y: auto; /* Enable vertical scrolling within the outlet container */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
 :root {
     /* COLORS */
     --BGCOLOR: #ffffff;
@@ -569,4 +592,139 @@ tr {
 	display: flex;
 	flex-direction: row;
 	gap: 20px;
+}
+
+hr{
+  width: 70%;
+  border: 1px solid blue;
+  margin: 20px 0;
+}
+
+
+/* ================================pages css----------------------------------------------------  */
+.two_side_grid{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5em;
+  padding: 2rem;
+}
+
+.blue_color_h1{
+  font-size: 3em;
+  color: blue;
+}
+
+/* =================================exam tiles css======================================== */
+.exam-tiles-container {
+  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.exam-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.exam-tile:hover {
+  transform: scale(1.05);
+}
+
+.exam-tile-content {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.exam-icon {
+  font-size: 2rem;
+  color: #007bff;
+  margin-right: 10px;
+}
+
+.exam-title {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.view-courses-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.view-courses-button:hover {
+  background-color: #0056b3;
+}
+
+
+/*================================= courses Tile ============================= */
+.course-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  max-width: 400px;
+  margin: 20px auto;
+  text-align: center;
+  background-color: #f9f9f9;
+}
+
+.icon-container {
+  font-size: 50px;
+  color: #007bff;
+}
+
+.info-container {
+  margin: 20px 0;
+}
+
+.title {
+  margin: 10px 0;
+  font-size: 24px;
+}
+
+.structure {
+  margin: 10px 0;
+  font-size: 16px;
+  color: #555;
+}
+
+.years {
+  margin: 10px 0;
+  font-size: 14px;
+  color: #777;
+}
+
+.button-container {
+  margin-top: 20px;
+}
+
+.add-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.add-button:hover {
+  background-color: #0056b3;
 }

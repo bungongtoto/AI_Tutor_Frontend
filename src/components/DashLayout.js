@@ -8,8 +8,10 @@ const DashLayout = () => {
       <main className="app">
         <SideBar />
         <div className="dash-container">
-        <DashHeader />
-          <Outlet />
+          <DashHeader />
+          <div className="outlet-container">
+            <Outlet />
+          </div>
         </div>
       </main>
     </>

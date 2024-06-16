@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
-  IoMdImage,
   IoIosSchool,
-  IoIosBulb,
   IoMdSettings,
   IoMdMenu,
   IoMdClose,
   IoIosBody,
 } from "react-icons/io";
+
+import { MdDashboard } from 'react-icons/md';
+import { FaBook , FaChalkboardTeacher} from "react-icons/fa";
+
 
 // Item component to display each menu item in the sidebar
 const Item = ({ title, to, icon, selected, setSelected }) => {
@@ -48,7 +50,7 @@ const SideBar = () => {
         <ul className={active ? "ul-item" : "ul-item oicon"}>
           <Item
             title="Dashboard"
-            icon={<IoMdImage className="icon" />}
+            icon={<MdDashboard className="icon" />}
             to={"/dash"}
             selected={selected}
             setSelected={setSelected}
@@ -56,20 +58,20 @@ const SideBar = () => {
           <Item
             title="Achievements"
             icon={<IoIosSchool className="icon" />}
-            to={""}
+            to={"/dash/achievement"}
             selected={selected}
             setSelected={setSelected}
           />
           <Item
             title="Exams"
-            icon={<IoIosSchool className="icon" />}
-            to={""}
+            icon={<FaBook className="icon" />}
+            to={"/dash/exam"}
             selected={selected}
             setSelected={setSelected}
           />
           <Item
             title="My Courses"
-            icon={<IoIosBulb className="icon" />}
+            icon={<FaChalkboardTeacher className="icon" />}
             to={""}
             selected={selected}
             setSelected={setSelected}

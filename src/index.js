@@ -12,7 +12,12 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <SnackbarProvider>
+        <SnackbarProvider
+          anchorOrigin={{
+            vertical: "top",
+            horizontal: "center",
+          }}
+        >
           <Routes>
             <Route path="/*" element={<App />} />
           </Routes>

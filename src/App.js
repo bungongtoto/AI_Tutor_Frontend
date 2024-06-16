@@ -24,6 +24,9 @@ import EditPaper from "./features/papers/EditPaper";
 import QuestionsList from "./features/questions/QuestionsList";
 import NewQuestionForm from "./features/questions/NewQuestionForm";
 import EditQuestion from "./features/questions/EditQuestion";
+import ExamPage from "./features/exams/user/ExamPage";
+import Achievement from "./features/achievements/Achievement";
+import CoursesPage from "./features/courses/user/CoursesPage";
 
 function App() {
   return (
@@ -68,6 +71,13 @@ function App() {
                   <Route path=":id" element={<EditQuestion />} />
                   <Route path="new/:paperId" element={<NewQuestionForm />} />
                 </Route>
+              </Route>
+              <Route path="exam">
+                <Route index element={<ExamPage />} />
+                <Route path="courses/:examId/:examtitle"  element={<CoursesPage />} />
+              </Route>
+              <Route path="achievement">
+                <Route index element={<Achievement />} />
               </Route>
             </Route>
           </Route>

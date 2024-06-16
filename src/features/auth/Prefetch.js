@@ -6,6 +6,7 @@ import {examsApiSlice} from '../exams/examsApiSlice';
 import { coursesApiSlice } from '../courses/coursesApiSlice';
 import { papersApiSlice } from '../papers/papersApiSlice';
 import { questionsApiSlice } from '../questions/questionsApiSlice';
+import { enrollmentsApiSlice } from '../enrollments/enrollmentsApiSlice';
 
 const Prefetch = () => {
     
@@ -15,6 +16,7 @@ const Prefetch = () => {
         store.dispatch(coursesApiSlice.util.prefetch('getCourses', 'coursesList', { force: true }))
         store.dispatch(papersApiSlice.util.prefetch('getPapers', 'papersList', { force: true }))
         store.dispatch(questionsApiSlice.util.prefetch('getQuestions', 'questionsList', { force: true }))
+        store.dispatch(enrollmentsApiSlice.util.prefetch('getEnrollments', 'enrollmentsList', { force: true }))
     }, [])
 
     return <Outlet />
