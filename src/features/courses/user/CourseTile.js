@@ -8,15 +8,16 @@ import { useEffect } from "react";
 
 const CourseTile = ({ courseId }) => {
   const {userId} = useAuth();
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
-  const [addNewEnrollment, { isLoading, isSuccess, isError, error }] =
-    useAddNewEnrollmentMutation();
-  
   const { course } = useGetCoursesQuery("coursesList", {
     selectFromResult: ({ data }) => ({
       course: data?.entities[courseId],
     }),
   });
+
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const [addNewEnrollment, { isLoading, isSuccess, isError, error }] =
+    useAddNewEnrollmentMutation();
+  
 
   const onAdd = async () => {
     enqueueSnackbar("Do you want to add this course to your list?", {

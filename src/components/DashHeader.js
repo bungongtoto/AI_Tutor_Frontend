@@ -25,7 +25,7 @@ const DashHeader = () => {
         <PulseLoader color={"blue"} />
       ) : (
        
-          <button onClick={onLogoutClicked}> Logout
+          <button className="logout-button" onClick={onLogoutClicked}> Logout
             <IoIosExit />
           </button>
       )}

@@ -4,10 +4,9 @@ import {
   IoIosSchool,
   IoMdSettings,
   IoMdMenu,
-  IoMdClose,
-  IoIosBody,
+  IoMdClose
 } from "react-icons/io";
-
+import { FaBeer } from 'react-icons/fa';  
 import { MdDashboard } from 'react-icons/md';
 import { FaBook , FaChalkboardTeacher} from "react-icons/fa";
 
@@ -72,7 +71,7 @@ const SideBar = () => {
           <Item
             title="My Courses"
             icon={<FaChalkboardTeacher className="icon" />}
-            to={""}
+            to={"/dash/mycourses"}
             selected={selected}
             setSelected={setSelected}
           />
@@ -85,7 +84,7 @@ const SideBar = () => {
           />
           <Item
             title="Admin"
-            icon={<IoIosBody className="icon" />}
+            icon={<FaBeer className="icon" />}
             to={"/dash/admin"}
             selected={selected}
             setSelected={setSelected}

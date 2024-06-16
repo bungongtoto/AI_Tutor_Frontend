@@ -46,9 +46,7 @@ const CoursesPage = () => {
   return (
     <div className="content_container">
       <h1 className="blue_color_h1">{examtitle} Courses</h1>
-      <div className="exam-tiles-container">
-        {coursesListContent}
-      </div>
+      <div className="exam-tiles-container">{coursesListContent}</div>
     </div>
   );
 };

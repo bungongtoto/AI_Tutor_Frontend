@@ -27,6 +27,9 @@ import EditQuestion from "./features/questions/EditQuestion";
 import ExamPage from "./features/exams/user/ExamPage";
 import Achievement from "./features/achievements/Achievement";
 import CoursesPage from "./features/courses/user/CoursesPage";
+import MyCourses from "./features/mycourses/MyCourses";
+import PaperPage from "./features/papers/user/PaperPage";
+import PaperQuestions from "./features/questions/user/PaperQuestions";
 
 function App() {
   return (
@@ -78,6 +81,11 @@ function App() {
               </Route>
               <Route path="achievement">
                 <Route index element={<Achievement />} />
+              </Route>
+              <Route path="mycourses">
+                <Route index element={<MyCourses />} />
+                <Route path="papers/:courseId/:coursetitle"  element={<PaperPage />} />
+                <Route path="questions/:paperId"  element={<PaperQuestions />} />
               </Route>
             </Route>
           </Route>

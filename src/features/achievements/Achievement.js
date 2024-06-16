@@ -15,7 +15,7 @@ const Achievement = () => {
                   Hello Welcome...
                 </h1>
                 <p>User: {email}.</p>
-                <h2>To AI Tutor</h2>
+                <h2>To Your Achievements</h2>
               </div>
               <LazyLoadImage
                 src={logo}
