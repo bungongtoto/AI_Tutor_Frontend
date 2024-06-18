@@ -55,7 +55,7 @@ const EditQuestionForm = ({ question }) => {
 
       <form className="form" onSubmit={(e) => e.preventDefault()}>
         <div className="form__title-row">
-          <h2>Edit Paper</h2>
+          <h2>Edit Question</h2>
           <div className="form__action-buttons">
             <button
               className="icon-button"

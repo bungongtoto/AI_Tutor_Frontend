@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import AIContainer from "../../ai/AIContainer";
 
 const QuestionsPage = ({ questions }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -72,14 +73,7 @@ const QuestionsPage = ({ questions }) => {
         AI Tutor
       </button>
       <div className={`ai-sidebar ${isSidebarOpen ? "open" : ""}`}>
-        <button className="close-button" onClick={closeSidebar}>
-          Close
-        </button>
-        <div className="sidebar-content">
-          <h2>AI Chat</h2>
-          <p>Chat with AI here...</p>
-          {/* Add your AI chat component here */}
-        </div>
+        <AIContainer closeSidebar={closeSidebar} />
       </div>
     </div>
   );

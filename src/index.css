@@ -917,7 +917,7 @@ hr{
   top: 0;
   right: 0;
   width: 0;
-  height: 100%;
+  max-height: 100vh;
   background-color: #ffffff;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
   overflow-x: hidden;
@@ -926,7 +926,7 @@ hr{
 }
 
 .sidebar-content {
-  padding: 20px;
+  max-height: 100vh;
   width: 50vw;
 }
 
@@ -938,7 +938,7 @@ hr{
 .close-button {
   position: absolute;
   top: 10px;
-  right: 10px;
+  left: 10px;
   background-color: #f44336;
   color: white;
   border: none;
@@ -952,3 +952,146 @@ hr{
 .close-button:hover {
   background-color: #d32f2f;
 }
+
+
+/* =====================================AI chat css start============================ */
+.AI_APP{
+  max-height: 100vh;
+  display: flex;
+}
+
+.AI_container_sidebar{
+  flex: 3;
+  border-right: 1px solid rgba(3, 64, 177, 0.2);
+}
+
+.main_AI{
+  flex: 9;
+}
+
+.upperside{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  border-bottom: 1px solid rgba(3, 64, 177, 0.2);
+  margin-bottom: 2rem;
+}
+
+.addBtn{
+  height: 1.3rem;
+  padding-right: 1rem;
+}
+
+.midBtn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 1.5rem;
+  font-size: 1.5rem;
+  width: 17rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  margin-bottom: 3rem;
+  border-radius: 0.5rem;
+}
+
+.query{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: 1px solid #007bff;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  font-size: 1rem;
+  width: 17rem;
+
+  margin: 1rem auto;
+  
+}
+
+.query>img{
+  margin-right: 1.2rem;
+  object-fit: cover;
+  height: -1.7rem;
+}
+
+.lowerside{
+  padding: 1rem;
+}
+
+.main_AI{
+  height: 95vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 3rem 1rem;
+  margin-bottom: 0;
+}
+
+.chats{
+  overflow: hidden;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  width: 100%;
+}
+
+.chat{
+  margin: 1rem;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: flex-start;
+  text-align: justify;
+}
+
+.chatimg{
+  object-fit: cover;
+  width: 3.5rem;
+  margin-right: 1rem;
+  border-radius: 0.5rem;
+}
+
+.bot {
+  background-color: #0057b369;
+  width: fit-content;
+  border-radius: 0.5rem;
+}
+
+.chatFooter{
+  margin-top: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.inp{
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid blue;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.inp>input, .send{
+  background-color: transparent;
+  border: none;
+}
+
+.inp>input {
+  width: calc(100% - 3rem);
+  outline: none;
+  padding: 1rem;
+}
+
+.chatFooter>p{
+  margin: 0.5rem 0;
+}
+/* =====================================AI chat css end============================ */
