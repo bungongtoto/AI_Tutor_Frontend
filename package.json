@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.5",
-    "dotenv": "^16.4.5",
     "jwt-decode": "^4.0.0",
     "notistack": "^3.0.1",
     "openai": "^4.51.0",
@@ -44,6 +43,7 @@
     ]
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "dotenv": "^16.4.5"
   }
 }
