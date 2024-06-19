@@ -927,11 +927,11 @@ hr{
 
 .sidebar-content {
   max-height: 100vh;
-  width: 50vw;
+  width: 60vw;
 }
 
 .open {
-  width: 50vw;
+  width: 60vw;
 }
 
 
@@ -1047,6 +1047,10 @@ hr{
   display: flex;
   align-items: flex-start;
   text-align: justify;
+}
+
+.text{
+  line-height: 1.5rem;
 }
 
 .chatimg{

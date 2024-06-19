@@ -1,14 +1,49 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import logo from "../../assets/images/AI_TUTOR_Logo.png";
 import addBtn from "../../assets/images/add-30.png";
 import msgIcon from "../../assets/images/message.svg";
 import sendBtn from "../../assets/images/send.svg";
-import userIcon from "../../assets/images/user_icon.png";
-import aiTutor from "../../assets/images/ai_tutor.png";
+import { sendMsgToOpenAI } from "./openai";
+import { PulseLoader } from "react-spinners";
+import ChatTile from "./ChatTile";
 
 const AIContainer = ({ closeSidebar }) => {
+  const msgEnd = useRef(null);
+  const [input, setIput] = useState("");
+  const [isLoading, setIsLoading] = useState(false)
+  const [messages, setMessages] = useState([
+    {
+      text: "Hi, i am AI Tutor. How can I assist you?",
+      isBot: true,
+    },
+  ]);
+
+  useEffect(() => {
+    msgEnd.current.scrollIntoView();
+  }, [messages]);
+
+  const handleSend = async () => {
+    setIsLoading(true);
+    const text = input;
+    setIput("");
+    setMessages([...messages, { text, isBot: false }]);
+    const response = await sendMsgToOpenAI(text);
+    setMessages([
+      ...messages,
+      {
+        text,
+        isBot: false,
+      },
+      {
+        text: response,
+        isBot: true,
+      },
+    ]);
+    setIsLoading(false)
+  };
+
   return (
     <>
       <button className="close-button" onClick={closeSidebar}>
@@ -27,27 +62,62 @@ const AIContainer = ({ closeSidebar }) => {
               />
             </div>
             <div className="lowerside">
-                <button className="midBtn"><img src={addBtn} alt="" className="addBtn" />New Chat</button>
-                <div className="upppersideBottom">
-                    <button className="query"><img src={msgIcon} alt="" />Explain Current Question</button>
-                    <button className="query"><img src={msgIcon} alt="" />Topics involed Question</button>
-                </div>
+              <button
+                className="midBtn"
+                onClick={() =>
+                  setMessages([
+                    {
+                      text: "Hi, i am AI Tutor. How can I assist you?",
+                      isBot: true,
+                    },
+                  ])
+                }
+              >
+                <img src={addBtn} alt="" className="addBtn" />
+                New Chat
+              </button>
+              <div className="upppersideBottom">
+                <button className="query">
+                  <img src={msgIcon} alt="" />
+                  Explain Current Question
+                </button>
+                <button className="query">
+                  <img src={msgIcon} alt="" />
+                  Topics involed Question
+                </button>
+              </div>
             </div>
           </div>
           <div className="main_AI">
             <div className="chats">
-                <div className="chat">
-                    <img className="chatimg" src={userIcon} alt="" /><p className="text">What color is the sound of a banana? This question doesn't make logical sense as sounds don't have colors.</p>
-                </div>
-                <div className="chat bot">
-                    <img className="chatimg" src={aiTutor} alt="" /><p className="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis temporibus ullam nulla ut aliquam. Officiis repudiandae incidunt reiciendis ratione voluptatum aut optio. Voluptatem a quas quo aperiam nulla sint dicta? Ipsam vel repellat neque qui doloremque sequi rem aperiam eius vero quo amet, quidem suscipit corporis quia porro repellendus laborum ullam ab sapiente voluptatibus incidunt! Totam omnis consectetur, rem vel vero repellat sed iste obcaecati veniam incidunt nobis labore, a debitis minus eos, eaque culpa quas quod facilis fugit aut eius neque consequatur voluptate. Cumque eos amet molestiae rem, sit magnam inventore praesentium dolorem maxime repellendus, nihil quaerat. Nulla, quis?</p>
-                </div>
+              {messages.map((message, i) => {
+                return (
+                  <ChatTile key={i} message={message} />  
+                );
+              })}
+              {isLoading && <PulseLoader color="blue" />}
+              <div ref={msgEnd} />
             </div>
             <div className="chatFooter">
-                <div className="inp">
-                    <input type="text" placeholder="Discuss with AI Tutor..." name="" id="" /><button className="send"><img src={sendBtn} alt="" /></button>
-                </div>
-                <p>AI Tutor may provide inaccurate answers, because it is  experimental</p>
+              <div className="inp">
+                <input
+                  type="text"
+                  value={input}
+                  onChange={(e) => {
+                    setIput(e.target.value);
+                  }}
+                  placeholder="Discuss with AI Tutor..."
+                  name=""
+                  id=""
+                />
+                <button onClick={handleSend} className="send">
+                  <img src={sendBtn} alt="" />
+                </button>
+              </div>
+              <p>
+                AI Tutor may provide inaccurate answers, because it is
+                experimental
+              </p>
             </div>
           </div>
         </div>
