@@ -831,6 +831,13 @@ hr{
 }
 
 /* ====================================Questions Page css=============================== */
+
+.answer, .question {
+  overflow: hidden;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  width: 100%;
+}
 .container {
   display: flex;
   flex-direction: column;
@@ -1051,6 +1058,7 @@ hr{
 
 .text{
   line-height: 1.5rem;
+  font-size: 1rem;
 }
 
 .chatimg{
@@ -1099,3 +1107,23 @@ hr{
   margin: 0.5rem 0;
 }
 /* =====================================AI chat css end============================ */
+
+
+/* =====================================stats charts css start============================ */
+.piechart{
+  width: 40vw;
+  height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.barchart{
+  width: 50vw;
+  height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =====================================stats charts css end============================ */

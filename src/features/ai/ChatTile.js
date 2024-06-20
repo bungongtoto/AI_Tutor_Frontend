@@ -1,8 +1,13 @@
 import React from "react";
+import MathJax from 'react-mathjax-preview'
 import userIcon from "../../assets/images/user_icon.png";
 import aiTutor from "../../assets/images/ai_tutor.png";
 
+
+
+
 const ChatTile = ({ message }) => {
+  
   return (
     <div className={message.isBot ? "chat bot" : "chat"}>
       <img
@@ -10,7 +15,8 @@ const ChatTile = ({ message }) => {
         src={message.isBot ? aiTutor : userIcon}
         alt=""
       />
-      <p className="text">{message.text}</p>
+      <MathJax className="text" math={message.text} />
+      
     </div>
   );
 };

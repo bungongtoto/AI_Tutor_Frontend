@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import AIContainer from "../../ai/AIContainer";
+import MathJax from "react-mathjax-preview";
 
 const QuestionsPage = ({ questions }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -54,26 +55,38 @@ const QuestionsPage = ({ questions }) => {
       <div className="content">
         <div className="question">
           <h2>Question {questions[currentIndex].number}</h2>
-          <div
+          <div className="display_box">
+            <MathJax
+              className="text"
+              math={getHtmlContent(questions[currentIndex].text)}
+            />
+          </div>
+          {/* <div
             dangerouslySetInnerHTML={{
               __html: getHtmlContent(questions[currentIndex].text),
             }}
-          />
+          /> */}
         </div>
         <div className="answer">
           <h2>Answer</h2>
-          <div
+          <div className="display_box">
+            <MathJax
+              className="text"
+              math={getHtmlContent(questions[currentIndex].answer)}
+            />
+          </div>
+          {/* <div
             dangerouslySetInnerHTML={{
               __html: getHtmlContent(questions[currentIndex].answer),
             }}
-          />
+          /> */}
         </div>
       </div>
       <button className="ai-chat-button" onClick={toggleSidebar}>
         AI Tutor
       </button>
       <div className={`ai-sidebar ${isSidebarOpen ? "open" : ""}`}>
-        <AIContainer closeSidebar={closeSidebar} />
+        <AIContainer closeSidebar={closeSidebar} question={questions[currentIndex].text} />
       </div>
     </div>
   );

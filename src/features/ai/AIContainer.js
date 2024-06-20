@@ -9,7 +9,7 @@ import { sendMsgToOpenAI } from "./openai";
 import { PulseLoader } from "react-spinners";
 import ChatTile from "./ChatTile";
 
-const AIContainer = ({ closeSidebar }) => {
+const AIContainer = ({ closeSidebar, question }) => {
   const msgEnd = useRef(null);
   const [input, setIput] = useState("");
   const [isLoading, setIsLoading] = useState(false)
@@ -29,7 +29,47 @@ const AIContainer = ({ closeSidebar }) => {
     const text = input;
     setIput("");
     setMessages([...messages, { text, isBot: false }]);
-    const response = await sendMsgToOpenAI(text);
+    const response = await sendMsgToOpenAI(text, messages.slice(-2));
+    setMessages([
+      ...messages,
+      {
+        text,
+        isBot: false,
+      },
+      {
+        text: response,
+        isBot: true,
+      },
+    ]);
+    setIsLoading(false)
+  };
+
+  const handleExplain = async () => {
+    setIsLoading(true);
+    const text = "explain the current question";
+    setIput("");
+    setMessages([...messages, { text, isBot: false }]);
+    const response = await sendMsgToOpenAI(text + " " + question, messages.slice(-2));
+    setMessages([
+      ...messages,
+      {
+        text,
+        isBot: false,
+      },
+      {
+        text: response,
+        isBot: true,
+      },
+    ]);
+    setIsLoading(false)
+  };
+
+  const handleTopics = async () => {
+    setIsLoading(true);
+    const text = "What topics are involved in the current question ?";
+    setIput("");
+    setMessages([...messages, { text, isBot: false }]);
+    const response = await sendMsgToOpenAI(text + " " + question, messages.slice(-2));
     setMessages([
       ...messages,
       {
@@ -77,11 +117,11 @@ const AIContainer = ({ closeSidebar }) => {
                 New Chat
               </button>
               <div className="upppersideBottom">
-                <button className="query">
+                <button onClick={handleExplain} className="query">
                   <img src={msgIcon} alt="" />
                   Explain Current Question
                 </button>
-                <button className="query">
+                <button onClick={handleTopics} className="query">
                   <img src={msgIcon} alt="" />
                   Topics involed Question
                 </button>

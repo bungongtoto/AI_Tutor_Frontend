@@ -30,6 +30,7 @@ import CoursesPage from "./features/courses/user/CoursesPage";
 import MyCourses from "./features/mycourses/MyCourses";
 import PaperPage from "./features/papers/user/PaperPage";
 import PaperQuestions from "./features/questions/user/PaperQuestions";
+import Statistics from "./features/statistics/Statistics";
 
 function App() {
   return (
@@ -73,6 +74,9 @@ function App() {
                   <Route index element={<QuestionsList />} />
                   <Route path=":id" element={<EditQuestion />} />
                   <Route path="new/:paperId" element={<NewQuestionForm />} />
+                </Route>
+                <Route path="statistics">
+                  <Route index element={<Statistics />} />
                 </Route>
               </Route>
               <Route path="exam">

@@ -54,7 +54,7 @@ const Admin = () => {
             <AdminNavTile
               title={"Statistics"}
               icon={<IoMdStats className="icon" />}
-              to={""}
+              to={"/dash/admin/statistics"}
             />
           </div>
           <div className="admin_chart_container"></div>
