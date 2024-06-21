@@ -626,11 +626,13 @@ nav .ul-item li:hover{
 }
 .admin_stats_container{
   width: 80vw;
-  height: 55vh;
-  background-color: blue;
+  height: 40vh;
   margin-bottom: 1.5rem;
+  
 }
+
 .admin_nav_container{
+  margin-top: 7vh;
   width: 22vw;
   height: 30vh;
   display: grid;
@@ -1145,6 +1147,7 @@ hr{
   font-size: 16px;
   border-radius: 5px 0 0 5px;
   transition: background-color 0.3s;
+  z-index: 2;
 }
 
 .ai-chat-button:hover {
@@ -1356,6 +1359,37 @@ hr{
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.stat-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border: 2px solid #4CAF50; /* Green border */
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  margin: 10px;
+}
+
+.stat-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #4CAF50; /* Green text */
+}
+
+.stat-icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+  color: #4CAF50; /* Green icon */
+}
+
+.stat-number {
+  font-size: 24px;
+  font-weight: bold;
 }
 
 /* =====================================stats charts css end============================ */

@@ -4,10 +4,12 @@ import {
   IoIosListBox,
   IoLogoBuffer,
   IoMdAlbums,
-  IoIosContacts, 
-  IoMdStats 
+  IoIosContacts,
+  IoMdStats,
 } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import GeneralStats from "../statistics/GeneralStats";
+import BarChart from "../statistics/BarChart";
 
 const AdminNavTile = ({ title, to, icon }) => {
   const navigate = useNavigate();
@@ -23,7 +25,8 @@ const Admin = () => {
   return (
     <>
       <div className="content_container">
-        <div className="admin_stats_container"></div>
+        <GeneralStats />
+
         <div className="admin_2nd_container">
           <div className="admin_nav_container">
             <AdminNavTile
@@ -57,7 +60,10 @@ const Admin = () => {
               to={"/dash/admin/statistics"}
             />
           </div>
-          <div className="admin_chart_container"></div>
+
+       
+            <BarChart />
+          
         </div>
       </div>
     </>

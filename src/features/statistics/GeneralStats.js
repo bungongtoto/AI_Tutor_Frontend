@@ -1,5 +1,8 @@
 import React from "react";
-import { Bar } from "react-chartjs-2";
+import StatTile from "./StatTile";
+import { FaChartLine, FaUsers, FaDollarSign, FaBook } from "react-icons/fa";
+import { AiFillBook } from "react-icons/ai";
+import { RiQuestionnaireLine } from "react-icons/ri";
 import { useGetExamsQuery } from "../exams/examsApiSlice";
 import { useGetQuestionsQuery } from "../questions/questionsApiSlice";
 import { useGetUsersQuery } from "../users/usersApiSlice";
@@ -7,27 +10,7 @@ import { useGetEnrollmentsQuery } from "../enrollments/enrollmentsApiSlice";
 import { PulseLoader } from "react-spinners";
 import { useGetCoursesQuery } from "../courses/coursesApiSlice";
 
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from "chart.js";
-
-// Register the necessary Chart.js components
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
-
-const BarChart = () => {
+const GeneralStats = () => {
   const {
     data: users,
     isLoading: isLoadingUsers,
@@ -136,38 +119,15 @@ const BarChart = () => {
     const { ids: enrollmentIds } = enrollments;
     numEnrollments = enrollmentIds?.length;
   }
-
-  const data = {
-    labels: ["Exams", "Courses", "Question", "Users", "Enrollments"],
-    datasets: [
-      {
-        label: "Quantity",
-        data: [numExams, numCourses, numQuestions, numUsers, numEnrollments],
-        backgroundColor: "rgba(75, 192, 192, 0.6)",
-        borderColor: "rgba(75, 192, 192, 1)",
-        borderWidth: 1,
-      },
-    ],
-  };
-
-  const options = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: "top",
-      },
-      title: {
-        display: true,
-        text: "Distribution of General Data",
-      },
-    },
-  };
-
   return (
-    <div className="barchart">
-      <Bar data={data} options={options} />
+    <div className="mission_container">
+      <StatTile title="Users" icon={<FaUsers />} number={numUsers} />
+      <StatTile title="Exams" icon={<FaBook />} number={numExams} />
+      <StatTile title="Courses" icon={<AiFillBook />} number={numCourses} />
+      <StatTile title="Questions" icon={<RiQuestionnaireLine />} number={numQuestions} />
+      <StatTile title="Enrollment" icon={<FaChartLine />} number={numEnrollments} />
     </div>
   );
 };
 
-export default BarChart;
+export default GeneralStats;
