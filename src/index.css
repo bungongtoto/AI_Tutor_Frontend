@@ -167,11 +167,11 @@ body {
   background-color: transparent;
 }
 
-
+/*=================================== footer container start=================================== */
 .home_footer_container{
   padding: 1rem ;
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: column nowrap;
   justify-content: space-between;
   align-items: center;
 }
@@ -181,6 +181,26 @@ body {
   position: sticky;
   border-top: 1px solid var(--BORDER-COLOR);
 }
+
+.contact-tile {
+  display: flex;
+  align-items: center;
+  
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.contact-icon {
+  color: blue; 
+  margin-right: 10px;
+}
+
+.contact-email {
+  color: white;
+}
+
+/*=================================== footer container end =================================== */
 
 .portalBtn{
   background-color: #00b34b;
