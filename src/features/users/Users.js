@@ -63,7 +63,7 @@ const Users = () => {
       <div className="content_container">
         <HeadingTile title={"User Management"} />
         <div className="top_buttons_container">
-          <button onClick={onAddUserClicked}>
+          <button title="Add User" onClick={onAddUserClicked}>
             <IoMdPersonAdd className="icon" />
           </button>
         </div>

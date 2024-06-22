@@ -4,8 +4,10 @@ import { useSendLogoutMutation } from "../features/auth/authApiSlice";
 import { useNavigate } from "react-router-dom";
 import { PulseLoader } from "react-spinners";
 import { useSnackbar } from "notistack";
+import useAuth from "../hooks/useAuth";
 
 const DashHeader = () => {
+  const {email} = useAuth();
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
   const [sendLogout, { isLoading, isError, error }] = useSendLogoutMutation();
@@ -20,7 +22,7 @@ const DashHeader = () => {
   return (
     <header className="dash_header">
     {isError ? <p className={errClass}>{error?.data?.message}</p> && enqueueSnackbar("Logout errro", { variant: "error" }) : <></>}
-    <p>Dash Header</p>
+    <p>User: {email} </p>
       {isLoading ? (
         <PulseLoader color={"blue"} />
       ) : (

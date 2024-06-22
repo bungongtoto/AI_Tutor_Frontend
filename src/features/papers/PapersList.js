@@ -143,7 +143,7 @@ const PapersList = () => {
       <div className="content_container">
         <HeadingTile title={"Papers Management"} />
         <div className="top_buttons_container">
-          <button onClick={onAddPaperClicked}>
+          <button title="Add Paper" onClick={onAddPaperClicked}>
             <IoMdAddCircleOutline className="icon" />
           </button>
         </div>

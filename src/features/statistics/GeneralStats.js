@@ -9,8 +9,11 @@ import { useGetUsersQuery } from "../users/usersApiSlice";
 import { useGetEnrollmentsQuery } from "../enrollments/enrollmentsApiSlice";
 import { PulseLoader } from "react-spinners";
 import { useGetCoursesQuery } from "../courses/coursesApiSlice";
+import useAuth from "../../hooks/useAuth";
 
 const GeneralStats = () => {
+  const {isAdmin} = useAuth();
+
   const {
     data: users,
     isLoading: isLoadingUsers,
@@ -121,11 +124,11 @@ const GeneralStats = () => {
   }
   return (
     <div className="mission_container">
-      <StatTile title="Users" icon={<FaUsers />} number={numUsers} />
+      {isAdmin && <StatTile title="Users" icon={<FaUsers />} number={numUsers} />}
       <StatTile title="Exams" icon={<FaBook />} number={numExams} />
       <StatTile title="Courses" icon={<AiFillBook />} number={numCourses} />
       <StatTile title="Questions" icon={<RiQuestionnaireLine />} number={numQuestions} />
-      <StatTile title="Enrollment" icon={<FaChartLine />} number={numEnrollments} />
+      {isAdmin && <StatTile title="Enrollment" icon={<FaChartLine />} number={numEnrollments} />}
     </div>
   );
 };

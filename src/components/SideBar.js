@@ -1,14 +1,10 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import {
-  IoIosSchool,
-  IoMdMenu,
-  IoMdClose
-} from "react-icons/io";
-import { FaBeer } from 'react-icons/fa';  
-import { MdDashboard } from 'react-icons/md';
-import { FaBook , FaChalkboardTeacher} from "react-icons/fa";
-
+import { IoIosSchool, IoMdMenu, IoMdClose } from "react-icons/io";
+import { FaBeer } from "react-icons/fa";
+import { MdDashboard } from "react-icons/md";
+import { FaBook, FaChalkboardTeacher } from "react-icons/fa";
+import useAuth from "../hooks/useAuth";
 
 // Item component to display each menu item in the sidebar
 const Item = ({ title, to, icon, selected, setSelected }) => {
@@ -18,7 +14,7 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
       className={selected === title ? "selected" : ""}
       onClick={() => {
         setSelected(title);
-        navigate(to)
+        navigate(to);
       }}
     >
       {icon}
@@ -28,6 +24,7 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
 };
 
 const SideBar = () => {
+  const { isAdmin } = useAuth();
   const [active, setActive] = useState(false);
   const [selected, setSelected] = useState("Dashboard");
 
@@ -53,7 +50,7 @@ const SideBar = () => {
             selected={selected}
             setSelected={setSelected}
           />
-          
+
           <Item
             title="Exams"
             icon={<FaBook className="icon" />}
@@ -75,13 +72,15 @@ const SideBar = () => {
             selected={selected}
             setSelected={setSelected}
           />
-          <Item
-            title="Admin"
-            icon={<FaBeer className="icon" />}
-            to={"/dash/admin"}
-            selected={selected}
-            setSelected={setSelected}
-          />
+          {isAdmin && (
+            <Item
+              title="Admin"
+              icon={<FaBeer className="icon" />}
+              to={"/dash/admin"}
+              selected={selected}
+              setSelected={setSelected}
+            />
+          )}
         </ul>
       </nav>
     </div>

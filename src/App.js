@@ -31,6 +31,8 @@ import MyCourses from "./features/mycourses/MyCourses";
 import PaperPage from "./features/papers/user/PaperPage";
 import PaperQuestions from "./features/questions/user/PaperQuestions";
 import Statistics from "./features/statistics/Statistics";
+import RequireAuth from "./features/auth/requireAuth";
+import { ROLES } from "./config/roles";
 
 function App() {
   return (
@@ -45,51 +47,74 @@ function App() {
           </Route>
         </Route>
         <Route element={<PersistLogin />}>
-          <Route element={<Prefetch />}>
-            <Route path="/dash" element={<DashLayout />}>
-              <Route index element={<Dashboard />} />
-              <Route path="admin">
-                <Route index element={<Admin />} />
-                <Route path="users">
-                  <Route index element={<Users />} />
-                  <Route path=":id" element={<EditUser />} />
-                  <Route path="new" element={<NewUserForm />} />
+          <Route
+            element={<RequireAuth allowedRoles={[...Object.values(ROLES)]} />}
+          >
+            <Route element={<Prefetch />}>
+              <Route path="/dash" element={<DashLayout />}>
+                <Route index element={<Dashboard />} />
+                {/* admins Route */}
+                <Route
+                  element={
+                    <RequireAuth allowedRoles={[ROLES.Admin]} />
+                  }
+                >
+                  <Route path="admin">
+                    <Route index element={<Admin />} />
+                    <Route path="users">
+                      <Route index element={<Users />} />
+                      <Route path=":id" element={<EditUser />} />
+                      <Route path="new" element={<NewUserForm />} />
+                    </Route>
+                    <Route path="exams">
+                      <Route index element={<ExamsList />} />
+                      <Route path=":id" element={<EditExam />} />
+                      <Route path="new" element={<NewExamForm />} />
+                    </Route>
+                    <Route path="courses">
+                      <Route index element={<CoursesList />} />
+                      <Route path=":id" element={<EditCourse />} />
+                      <Route path="new" element={<NewCourseForm />} />
+                    </Route>
+                    <Route path="papers">
+                      <Route index element={<PapersList />} />
+                      <Route path=":id" element={<EditPaper />} />
+                      <Route path="new" element={<NewPaperForm />} />
+                    </Route>
+                    <Route path="questions">
+                      <Route index element={<QuestionsList />} />
+                      <Route path=":id" element={<EditQuestion />} />
+                      <Route
+                        path="new/:paperId"
+                        element={<NewQuestionForm />}
+                      />
+                    </Route>
+                    <Route path="statistics">
+                      <Route index element={<Statistics />} />
+                    </Route>
+                  </Route>
                 </Route>
-                <Route path="exams">
-                  <Route index element={<ExamsList />} />
-                  <Route path=":id" element={<EditExam />} />
-                  <Route path="new" element={<NewExamForm />} />
+                <Route path="exam">
+                  <Route index element={<ExamPage />} />
+                  <Route
+                    path="courses/:examId/:examtitle"
+                    element={<CoursesPage />}
+                  />
                 </Route>
-                <Route path="courses">
-                  <Route index element={<CoursesList />} />
-                  <Route path=":id" element={<EditCourse />} />
-                  <Route path="new" element={<NewCourseForm />} />
+                <Route path="achievement">
+                  <Route index element={<Achievement />} />
                 </Route>
-                <Route path="papers">
-                  <Route index element={<PapersList />} />
-                  <Route path=":id" element={<EditPaper />} />
-                  <Route path="new" element={<NewPaperForm />} />
+                <Route path="mycourses">
+                  <Route index element={<MyCourses />} />
+                  <Route
+                    path="papers/:courseId/:coursetitle"
+                    element={<PaperPage />}
+                  />
+                  <Route
+                    path="questions/:paperId"
+                    element={<PaperQuestions />}
+                  />
                 </Route>
-                <Route path="questions">
-                  <Route index element={<QuestionsList />} />
-                  <Route path=":id" element={<EditQuestion />} />
-                  <Route path="new/:paperId" element={<NewQuestionForm />} />
-                </Route>
-                <Route path="statistics">
-                  <Route index element={<Statistics />} />
-                </Route>
-              </Route>
-              <Route path="exam">
-                <Route index element={<ExamPage />} />
-                <Route path="courses/:examId/:examtitle"  element={<CoursesPage />} />
-              </Route>
-              <Route path="achievement">
-                <Route index element={<Achievement />} />
-              </Route>
-              <Route path="mycourses">
-                <Route index element={<MyCourses />} />
-                <Route path="papers/:courseId/:coursetitle"  element={<PaperPage />} />
-                <Route path="questions/:paperId"  element={<PaperQuestions />} />
               </Route>
             </Route>
           </Route>
