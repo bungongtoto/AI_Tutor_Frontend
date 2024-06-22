@@ -45,7 +45,7 @@ const PaperQuestions = () => {
         <QuestionsPage questions={questionsListContent} />
       ) : (
         <>
-          <h2 className="color_red">No Papers For this Course Yet</h2>
+          <h2 className="color_red">No Questions For this Paper Yet</h2>
         </>
       )}
     </div>

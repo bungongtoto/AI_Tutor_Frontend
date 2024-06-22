@@ -1354,7 +1354,7 @@ hr{
 
 /* =====================================stats charts css start============================ */
 .piechart{
-  width: 40vw;
+  width: 30vw;
   height: 40vh;
   display: flex;
   align-items: center;
@@ -1363,6 +1363,14 @@ hr{
 
 .barchart{
   width: 50vw;
+  height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.barchart_user{
+  width: 70vw;
   height: 40vh;
   display: flex;
   align-items: center;
@@ -1430,3 +1438,40 @@ hr{
   color: #4CAF50; /* Green number */
 }
 /* =================================achievement styles start-------------------------------- */
+
+/* heading tile styles */
+.heading-tile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border: 2px solid #4CAF50; /* Green border */
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  width: 100%;
+  text-align: center;
+}
+
+.heading-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  overflow: hidden; /* Ensures the text is hidden */
+  white-space: nowrap; /* Prevents the text from wrapping */
+  border-right: 0.15em solid #4CAF50; /* Cursor effect */
+  animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The cursor blink effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: transparent; }
+}

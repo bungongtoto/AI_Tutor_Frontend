@@ -6,6 +6,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import logo from "../../assets/images/education_lion.png";
 import { PulseLoader } from "react-spinners";
 import MyCourseTile from "./MyCourseTile";
+import HeadingTile from "../../components/HeadingTile";
 
 const MyCourses = () => {
   const { userId, email } = useAuth();
@@ -43,6 +44,7 @@ const MyCourses = () => {
     return (
       <>
         <div className="content_container">
+          <HeadingTile title={"My Enrolled Courses"} />
           <div className="two_side_grid">
             <div className="content_container">
               <h1 className="blue_color_h1">Welcome...</h1>

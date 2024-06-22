@@ -6,6 +6,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import logo from "../../../assets/images/baby_edu_lion.png";
 import { PulseLoader } from "react-spinners";
 import ExamTile from "./ExamTile";
+import HeadingTile from "../../../components/HeadingTile";
 
 const ExamPage = () => {
   const { email } = useAuth();
@@ -39,6 +40,7 @@ const ExamPage = () => {
   return (
     <>
       <div className="content_container">
+        <HeadingTile title={"AI Tutor's Exams Page"} />
         <div className="two_side_grid">
           <div className="content_container">
             <h1 className="blue_color_h1">Hello ...</h1>

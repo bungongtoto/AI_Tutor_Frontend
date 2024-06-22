@@ -10,6 +10,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import GeneralStats from "../statistics/GeneralStats";
 import BarChart from "../statistics/BarChart";
+import HeadingTile from "../../components/HeadingTile";
 
 const AdminNavTile = ({ title, to, icon }) => {
   const navigate = useNavigate();
@@ -25,6 +26,7 @@ const Admin = () => {
   return (
     <>
       <div className="content_container">
+        <HeadingTile title={"Welcome To The Admin's Dashboard"} />
         <GeneralStats />
 
         <div className="admin_2nd_container">

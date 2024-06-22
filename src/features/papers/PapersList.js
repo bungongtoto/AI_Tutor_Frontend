@@ -4,6 +4,7 @@ import { PulseLoader } from "react-spinners";
 import Paper from "./Paper";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import HeadingTile from '../../components/HeadingTile';
 
 const PapersList = () => {
     const {
@@ -60,6 +61,7 @@ const PapersList = () => {
       return (
         <>
           <div className="content_container">
+            <HeadingTile title={"Papers Management"} />
             <div className="top_buttons_container">
               <button onClick={onAddPaperClicked}>
                 <IoMdAddCircleOutline className="icon" />

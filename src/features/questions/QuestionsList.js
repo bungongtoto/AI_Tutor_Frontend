@@ -5,6 +5,7 @@ import { useGetCoursesQuery } from "../courses/coursesApiSlice";
 import { useGetPapersQuery } from "../papers/papersApiSlice";
 import { PulseLoader } from "react-spinners";
 import Question from "./Question";
+import HeadingTile from "../../components/HeadingTile";
 
 const QuestionsList = () => {
   const {
@@ -175,6 +176,7 @@ const QuestionsList = () => {
   return (
     <>
       <div className="content_container">
+        <HeadingTile title={"Questions Management"} />
         <div className="top_buttons_container">
           {isSuccessCourses && (
             <div className="class_container">

@@ -6,6 +6,7 @@ import logo from "../../assets/images/achievementPage_lion.png";
 import AchievementTile from './AchievementTile';
 import { useGetEnrollmentsQuery } from '../enrollments/enrollmentsApiSlice';
 import { PulseLoader } from 'react-spinners';
+import HeadingTile from '../../components/HeadingTile';
 
 const Achievement = () => {
   const { userId, email } = useAuth();
@@ -37,6 +38,7 @@ const Achievement = () => {
     return (
         <>
           <div className="content_container">
+            <HeadingTile title={"Your Achievement Page"} />
             <div className="two_side_grid">
               <div className="content_container">
                 <h1 className="blue_color_h1">

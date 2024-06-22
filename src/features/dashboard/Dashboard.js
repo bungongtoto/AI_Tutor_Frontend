@@ -4,6 +4,8 @@ import AIContainer from "../ai/AIContainer";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import logo from "../../assets/images/achievementPage_lion.png";
+import HeadingTile from "../../components/HeadingTile";
+import GeneralStats from "../statistics/GeneralStats";
 
 const Dashboard = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -18,6 +20,7 @@ const Dashboard = () => {
   return (
     <>
       <div className="content_container">
+        <HeadingTile title={"Welcome To Your Dashboard"} />
         <div className="two_side_grid">
           <div className="content_container gap">
             <h1 className="blue_color_h1">Hello Welcome...</h1>
@@ -33,6 +36,7 @@ const Dashboard = () => {
           />
         </div>
         <hr />
+        <GeneralStats />
         <button className="ai-chat-button" onClick={toggleSidebar}>
           AI Tutor
         </button>

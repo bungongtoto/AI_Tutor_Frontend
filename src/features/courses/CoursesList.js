@@ -4,6 +4,7 @@ import { PulseLoader } from "react-spinners";
 import Course from "./Course";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import HeadingTile from '../../components/HeadingTile';
 
 const CoursesList = () => {
   const {
@@ -66,6 +67,7 @@ const CoursesList = () => {
   return (
     <>
       <div className="content_container">
+        <HeadingTile title={"Courses Management"} />
         <div className="top_buttons_container">
           <button onClick={onAddCourseClicked}>
             <IoMdAddCircleOutline className="icon" />

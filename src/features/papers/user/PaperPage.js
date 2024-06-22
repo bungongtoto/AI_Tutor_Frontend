@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import { useGetPapersQuery } from "../papersApiSlice";
 import { PulseLoader } from "react-spinners";
 import PaperTile from "./PaperTile";
+import HeadingTile from "../../../components/HeadingTile";
 
 const PaperPage = () => {
   const { courseId, coursetitle } = useParams();
@@ -47,7 +48,7 @@ const PaperPage = () => {
       <div className="content_container">
         <div className="two_side_grid">
           <div className="content_container">
-            <h2 className="blue_color_h2">{coursetitle}</h2>
+            <HeadingTile title={`${coursetitle} Papers`} />
             {isErrorPaper && (
               <p className="errmsg">{errorPaper?.data?.message}</p>
             )}

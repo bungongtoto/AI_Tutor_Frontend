@@ -113,7 +113,7 @@ const UserEnrollmentStats = () => {
   };
 
   return (
-    <div className="barchart">
+    <div className="barchart_user">
       <Bar data={data} options={options} />
     </div>
   );

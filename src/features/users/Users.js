@@ -4,6 +4,7 @@ import { PulseLoader } from "react-spinners";
 import User from "./User";
 import { IoMdPersonAdd } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import HeadingTile from "../../components/HeadingTile";
 
 const Users = () => {
   const {
@@ -60,6 +61,7 @@ const Users = () => {
   return (
     <>
       <div className="content_container">
+        <HeadingTile title={"User Management"} />
         <div className="top_buttons_container">
           <button onClick={onAddUserClicked}>
             <IoMdPersonAdd className="icon" />

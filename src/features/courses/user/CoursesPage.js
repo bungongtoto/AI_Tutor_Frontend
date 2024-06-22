@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useGetCoursesQuery } from "../coursesApiSlice";
 import { PulseLoader } from "react-spinners";
 import CourseTile from "./CourseTile";
+import HeadingTile from "../../../components/HeadingTile";
 
 const CoursesPage = () => {
   const { examId, examtitle } = useParams();
@@ -45,7 +46,7 @@ const CoursesPage = () => {
   }
   return (
     <div className="content_container">
-      <h1 className="blue_color_h1">{examtitle} Courses</h1>
+      <HeadingTile title={`${examtitle} Courses`} />
       <div className="exam-tiles-container">{coursesListContent}</div>
     </div>
   );
