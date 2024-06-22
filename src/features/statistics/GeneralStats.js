@@ -1,6 +1,6 @@
 import React from "react";
 import StatTile from "./StatTile";
-import { FaChartLine, FaUsers, FaDollarSign, FaBook } from "react-icons/fa";
+import { FaChartLine, FaUsers, FaBook } from "react-icons/fa";
 import { AiFillBook } from "react-icons/ai";
 import { RiQuestionnaireLine } from "react-icons/ri";
 import { useGetExamsQuery } from "../exams/examsApiSlice";

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
   IoIosSchool,
-  IoMdSettings,
   IoMdMenu,
   IoMdClose
 } from "react-icons/io";
@@ -54,13 +53,7 @@ const SideBar = () => {
             selected={selected}
             setSelected={setSelected}
           />
-          <Item
-            title="Achievements"
-            icon={<IoIosSchool className="icon" />}
-            to={"/dash/achievement"}
-            selected={selected}
-            setSelected={setSelected}
-          />
+          
           <Item
             title="Exams"
             icon={<FaBook className="icon" />}
@@ -76,9 +69,9 @@ const SideBar = () => {
             setSelected={setSelected}
           />
           <Item
-            title="Settings"
-            icon={<IoMdSettings className="icon" />}
-            to={""}
+            title="Achievements"
+            icon={<IoIosSchool className="icon" />}
+            to={"/dash/achievement"}
             selected={selected}
             setSelected={setSelected}
           />

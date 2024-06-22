@@ -12,7 +12,7 @@ import ChatTile from "./ChatTile";
 const AIContainer = ({ closeSidebar, question }) => {
   const msgEnd = useRef(null);
   const [input, setIput] = useState("");
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
   const [messages, setMessages] = useState([
     {
       text: "Hi, i am AI Tutor. How can I assist you?",
@@ -41,7 +41,7 @@ const AIContainer = ({ closeSidebar, question }) => {
         isBot: true,
       },
     ]);
-    setIsLoading(false)
+    setIsLoading(false);
   };
 
   const handleExplain = async () => {
@@ -49,7 +49,10 @@ const AIContainer = ({ closeSidebar, question }) => {
     const text = "explain the current question";
     setIput("");
     setMessages([...messages, { text, isBot: false }]);
-    const response = await sendMsgToOpenAI(text + " " + question, messages.slice(-2));
+    const response = await sendMsgToOpenAI(
+      text + " " + question,
+      messages.slice(-2)
+    );
     setMessages([
       ...messages,
       {
@@ -61,7 +64,7 @@ const AIContainer = ({ closeSidebar, question }) => {
         isBot: true,
       },
     ]);
-    setIsLoading(false)
+    setIsLoading(false);
   };
 
   const handleTopics = async () => {
@@ -69,7 +72,10 @@ const AIContainer = ({ closeSidebar, question }) => {
     const text = "What topics are involved in the current question ?";
     setIput("");
     setMessages([...messages, { text, isBot: false }]);
-    const response = await sendMsgToOpenAI(text + " " + question, messages.slice(-2));
+    const response = await sendMsgToOpenAI(
+      text + " " + question,
+      messages.slice(-2)
+    );
     setMessages([
       ...messages,
       {
@@ -81,7 +87,7 @@ const AIContainer = ({ closeSidebar, question }) => {
         isBot: true,
       },
     ]);
-    setIsLoading(false)
+    setIsLoading(false);
   };
 
   return (
@@ -116,24 +122,24 @@ const AIContainer = ({ closeSidebar, question }) => {
                 <img src={addBtn} alt="" className="addBtn" />
                 New Chat
               </button>
-              <div className="upppersideBottom">
-                <button onClick={handleExplain} className="query">
-                  <img src={msgIcon} alt="" />
-                  Explain Current Question
-                </button>
-                <button onClick={handleTopics} className="query">
-                  <img src={msgIcon} alt="" />
-                  Topics involed Question
-                </button>
-              </div>
+              {question && (
+                <div className="upppersideBottom">
+                  <button onClick={handleExplain} className="query">
+                    <img src={msgIcon} alt="" />
+                    Explain Current Question
+                  </button>
+                  <button onClick={handleTopics} className="query">
+                    <img src={msgIcon} alt="" />
+                    Topics involed Question
+                  </button>
+                </div>
+              )}
             </div>
           </div>
           <div className="main_AI">
             <div className="chats">
               {messages.map((message, i) => {
-                return (
-                  <ChatTile key={i} message={message} />  
-                );
+                return <ChatTile key={i} message={message} />;
               })}
               {isLoading && <PulseLoader color="blue" />}
               <div ref={msgEnd} />

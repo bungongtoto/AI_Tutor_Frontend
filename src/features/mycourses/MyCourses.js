@@ -37,7 +37,7 @@ const MyCourses = () => {
     content =
       contentobj?.length &&
       contentobj.map((contentObj) => (
-        <MyCourseTile key={contentObj.courseId} courseId={contentObj.courseId} />
+        <MyCourseTile key={contentObj.courseId} courseId={contentObj.courseId} enrollmentId={contentObj.id} />
       ));
 
     return (
