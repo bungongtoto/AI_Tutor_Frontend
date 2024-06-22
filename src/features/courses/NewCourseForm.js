@@ -5,8 +5,10 @@ import { useGetExamsQuery } from "../exams/examsApiSlice";
 import { useNavigate } from "react-router-dom";
 import { IoIosSave } from "react-icons/io";
 import { PulseLoader } from "react-spinners";
+import { useSnackbar } from "notistack";
 
 const NewCourseForm = () => {
+  const { enqueueSnackbar } = useSnackbar();
   const [addNewCourse, { isLoading, isSuccess, isError, error }] =
     useAddNewCourseMutation();
   const {
@@ -30,9 +32,16 @@ const NewCourseForm = () => {
       setSelectedExam("");
       setStructure("");
       setYears("");
+      enqueueSnackbar("Added Course Seccessfully!", { variant: "success" });
       navigate("/dash/admin/courses");
     }
-  }, [isSuccess, navigate]);
+  }, [isSuccess, navigate, enqueueSnackbar]);
+
+  useEffect(()=> {
+    if(isError){
+      enqueueSnackbar("Could not add Course!", { variant: "error" });
+    }
+  }, [isError, enqueueSnackbar])
 
   const onTitleChanged = (e) => setTitle(e.target.value);
   const handleExamChange = (e) => setSelectedExam(e.target.value);

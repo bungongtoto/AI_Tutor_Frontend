@@ -5,8 +5,10 @@ import { IoIosSave } from "react-icons/io";
 import { ROLES } from "../../config/roles";
 import PasswordStrengthBar from "react-password-strength-bar";
 import { PulseLoader } from "react-spinners";
+import { useSnackbar } from "notistack";
 
 const NewUserForm = () => {
+  const { enqueueSnackbar } = useSnackbar();
   const [addNewUser, { isLoading, isSuccess, isError, error }] =
     useAddNewUserMutation();
 
@@ -21,9 +23,16 @@ const NewUserForm = () => {
       setEmail("");
       setPassword("");
       setRoles([]);
+      enqueueSnackbar("Added User Seccessfully!", { variant: "success" });
       navigate("/dash/admin/users");
     }
-  }, [isSuccess, navigate]);
+  }, [isSuccess, navigate, enqueueSnackbar]);
+
+  useEffect(()=> {
+    if(isError){
+      enqueueSnackbar("Could not add user!", { variant: "error" });
+    }
+  }, [isError, enqueueSnackbar])
 
   const onEmailChanged = (e) => setEmail(e.target.value);
   const onPasswordChanged = (e) => setPassword(e.target.value);

@@ -8,8 +8,10 @@ import { IoMdTrash, IoIosSave } from "react-icons/io";
 import { PulseLoader } from "react-spinners";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { useSnackbar } from "notistack";
 
 const EditQuestionForm = ({ question }) => {
+  const { enqueueSnackbar } = useSnackbar();
   const navigate = useNavigate();
   const [updateQuestion, { isLoading, isSuccess, isError, error }] =
     useUpdateQuestionMutation();
@@ -29,9 +31,16 @@ const EditQuestionForm = ({ question }) => {
       setNumber("");
       setText("");
       setAnswer("");
+      enqueueSnackbar("Seccessfull!", { variant: "success" });
       navigate("/dash/admin/questions");
     }
-  }, [isSuccess, isDelSuccess, navigate]);
+  }, [isSuccess, isDelSuccess, navigate, enqueueSnackbar]);
+
+  useEffect(() => {
+    if (isError || isDelError) {
+      enqueueSnackbar("An Error Occured!", { variant: "error" });
+    }
+  }, [isDelError, isError, enqueueSnackbar]);
 
   const onSaveExamClicked = async (e) => {
     await updateQuestion({

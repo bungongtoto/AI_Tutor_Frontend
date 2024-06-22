@@ -4,8 +4,10 @@ import { useAddNewExamMutation } from "./examsApiSlice";
 import { useNavigate } from "react-router-dom";
 import { IoIosSave } from "react-icons/io";
 import { PulseLoader } from "react-spinners";
+import { useSnackbar } from "notistack";
 
 const NewExamForm = () => {
+  const { enqueueSnackbar } = useSnackbar();
   const [addNewExam, { isLoading, isSuccess, isError, error }] =
     useAddNewExamMutation();
 
@@ -16,9 +18,16 @@ const NewExamForm = () => {
   useEffect(() => {
     if (isSuccess) {
       setTitle("");
+      enqueueSnackbar("Added Exam Seccessfully!", { variant: "success" });
       navigate("/dash/admin/exams");
     }
-  }, [isSuccess, navigate]);
+  }, [isSuccess, navigate, enqueueSnackbar]);
+
+  useEffect(()=> {
+    if(isError){
+      enqueueSnackbar("Could not add exams!", { variant: "error" });
+    }
+  },[isError, enqueueSnackbar])
 
   const onTitleChanged = (e) => setTitle(e.target.value);
 

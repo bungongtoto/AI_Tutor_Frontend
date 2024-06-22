@@ -3,8 +3,10 @@ import { useUpdateExamMutation, useDeleteExamMutation } from "./examsApiSlice";
 import { useNavigate } from "react-router-dom";
 import { IoMdTrash, IoIosSave } from "react-icons/io";
 import { PulseLoader } from "react-spinners";
+import { useSnackbar } from "notistack";
 
 const EditExamForm = ({ exam }) => {
+  const { enqueueSnackbar } = useSnackbar();
   const [updateExam, { isLoading, isSuccess, isError, error }] =
     useUpdateExamMutation();
 
@@ -21,9 +23,16 @@ const EditExamForm = ({ exam }) => {
     console.log(isSuccess);
     if (isSuccess || isDelSuccess) {
       setTitle("");
+      enqueueSnackbar("Seccessfull!", { variant: "success" });
       navigate("/dash/admin/exams");
     }
-  }, [isSuccess, isDelSuccess, navigate]);
+  }, [isSuccess, isDelSuccess, navigate, enqueueSnackbar]);
+
+  useEffect(() => {
+    if (isError || isDelError) {
+      enqueueSnackbar("An Error Occured!", { variant: "error" });
+    }
+  }, [isDelError, isError, enqueueSnackbar]);
 
   const onTitleChanged = (e) => setTitle(e.target.value);
 

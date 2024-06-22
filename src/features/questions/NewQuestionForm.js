@@ -8,8 +8,10 @@ import { useParams } from "react-router-dom";
 import { useGetQuestionsQuery } from "./questionsApiSlice";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { useSnackbar } from "notistack";
 
 const NewQuestionForm = () => {
+  const { enqueueSnackbar } = useSnackbar();
   const { paperId } = useParams();
   const [addNewQuestion, { isLoading, isSuccess, isError, error }] =
     useAddNewQuestionMutation();
@@ -31,9 +33,16 @@ const NewQuestionForm = () => {
   useEffect(() => {
     if (isSuccess) {
       setNumber("");
+      enqueueSnackbar("Added Question Seccessfully!", { variant: "success" });
       navigate("/dash/admin/questions");
     }
-  }, [isSuccess, navigate]);
+  }, [isSuccess, navigate, enqueueSnackbar]);
+
+  useEffect(()=> {
+    if(isError){
+      enqueueSnackbar("Could not add Question!", { variant: "error" });
+    }
+  }, [isError, enqueueSnackbar])
 
   useEffect(() => {
     if (isSuccessQuestions) {

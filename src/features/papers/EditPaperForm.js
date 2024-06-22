@@ -3,7 +3,7 @@ import {
   useUpdatePaperMutation,
   useDeletePaperMutation,
 } from "./papersApiSlice";
-
+import { useSnackbar } from "notistack";
 import { useGetExamsQuery } from "../exams/examsApiSlice";
 import { useGetCoursesQuery } from "../courses/coursesApiSlice";
 import { useNavigate } from "react-router-dom";
@@ -11,6 +11,7 @@ import { IoMdTrash, IoIosSave } from "react-icons/io";
 import { PulseLoader } from "react-spinners";
 
 const EditPaperForm = ({ paper }) => {
+  const { enqueueSnackbar } = useSnackbar();
   const [updatePaper, { isLoading, isSuccess, isError, error }] =
     useUpdatePaperMutation();
 
@@ -47,9 +48,17 @@ const EditPaperForm = ({ paper }) => {
       setYear("");
       setSelectedExam("");
       setSelectedCourse("");
+      enqueueSnackbar("Seccessfull!", { variant: "success" });
       navigate("/dash/admin/papers");
     }
-  }, [isSuccess, isDelSuccess, navigate]);
+  }, [isSuccess, isDelSuccess, navigate, enqueueSnackbar]);
+  
+
+  useEffect(() => {
+    if (isError || isDelError) {
+      enqueueSnackbar("An Error Occured!", { variant: "error" });
+    }
+  }, [isDelError, isError, enqueueSnackbar]);
 
   const onYearChanged = (e) => setYear(e.target.value);
   const handleExamChange = (e) => setSelectedExam(e.target.value);
@@ -158,7 +167,7 @@ const EditPaperForm = ({ paper }) => {
           required
         />
 
-        { isSuccessCourses && (
+        {isSuccessCourses && (
           <div className="class_container">
             <div className="input-container">
               <label htmlFor="exams" className="dropdown">
@@ -178,21 +187,21 @@ const EditPaperForm = ({ paper }) => {
             </div>
 
             <div className="input-container">
-                <label htmlFor="courseName" className="dropdown">
-                  {" "}
-                  Course:{" "}
-                </label>
-                <select
-                  id="courseName"
-                  placeholder="Select the courseName"
-                  required
-                  value={selectedCourse}
-                  onChange={handleCourseChange}
-                >
-                  <option>Select A Course</option>
-                  {coursesListOptions}
-                </select>
-              </div>
+              <label htmlFor="courseName" className="dropdown">
+                {" "}
+                Course:{" "}
+              </label>
+              <select
+                id="courseName"
+                placeholder="Select the courseName"
+                required
+                value={selectedCourse}
+                onChange={handleCourseChange}
+              >
+                <option>Select A Course</option>
+                {coursesListOptions}
+              </select>
+            </div>
           </div>
         )}
       </form>
@@ -201,7 +210,11 @@ const EditPaperForm = ({ paper }) => {
 
   return (
     <div className="content_container">
-      {isLoading || isLoadingCourses || isLoadingExams ? <PulseLoader color="blue" /> : content}
+      {isLoading || isLoadingCourses || isLoadingExams ? (
+        <PulseLoader color="blue" />
+      ) : (
+        content
+      )}
     </div>
   );
 };

@@ -8,8 +8,10 @@ import {
 import { useNavigate } from "react-router-dom";
 import { IoMdTrash, IoIosSave } from "react-icons/io";
 import { PulseLoader } from "react-spinners";
+import { useSnackbar } from "notistack";
 
 const EditCourseForm = ({ course }) => {
+  const { enqueueSnackbar } = useSnackbar();
   const [updateCourse, { isLoading, isSuccess, isError, error }] =
     useUpdateCourseMutation();
 
@@ -40,9 +42,16 @@ const EditCourseForm = ({ course }) => {
       setSelectedExam("");
       setStructure("");
       setYears("");
+      enqueueSnackbar("Seccessfull!", { variant: "success" });
       navigate("/dash/admin/courses");
     }
-  }, [isSuccess, isDelSuccess, navigate]);
+  }, [isSuccess, isDelSuccess, navigate, enqueueSnackbar]);
+
+  useEffect(() => {
+    if (isError || isDelError) {
+      enqueueSnackbar("An Error Occured!", { variant: "error" });
+    }
+  }, [isDelError, isError, enqueueSnackbar]);
 
   const onTitleChanged = (e) => setTitle(e.target.value);
   const handleExamChange = (e) => setSelectedExam(e.target.value);

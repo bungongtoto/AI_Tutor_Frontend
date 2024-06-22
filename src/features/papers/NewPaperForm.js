@@ -6,8 +6,10 @@ import { useGetCoursesQuery } from "../courses/coursesApiSlice";
 import { useNavigate } from "react-router-dom";
 import { IoIosSave } from "react-icons/io";
 import { PulseLoader } from "react-spinners";
+import { useSnackbar } from "notistack";
 
 const NewPaperForm = () => {
+  const { enqueueSnackbar } = useSnackbar();
   const [addNewPaper, { isLoading, isSuccess, isError, error }] =
     useAddNewPaperMutation();
   const {
@@ -38,9 +40,16 @@ const NewPaperForm = () => {
       setYear("");
       setSelectedExam("");
       setSelectedCourse("");
+      enqueueSnackbar("Added Paper Seccessfully!", { variant: "success" });
       navigate("/dash/admin/courses");
     }
-  }, [isSuccess, navigate]);
+  }, [isSuccess, navigate, enqueueSnackbar]);
+
+  useEffect(()=> {
+    if(isError){
+      enqueueSnackbar("Could not add Paper!", { variant: "error" });
+    }
+  }, [isError, enqueueSnackbar])
 
   const onYearChanged = (e) => setYear(e.target.value);
   const handleExamChange = (e) => setSelectedExam(e.target.value);
