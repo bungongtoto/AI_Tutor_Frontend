@@ -35,9 +35,14 @@
   height: 100%;
 }
 
+html {
+  scroll-behavior: smooth;
+  min-width: 350px;
+}
+
 .app {
   display: flex;
-  height: 100vh;
+  min-width: 350px;
 }
 
 .color_red{
@@ -130,6 +135,7 @@
 body {
   font-family: 'Roboto', sans-serif;
   height: 100vh;
+  min-width: 350px;
 }
 
 .logo {
@@ -154,7 +160,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 1;
-  background-color: rgba(169, 169, 223, 0.548);
+  background-color: rgba(169, 169, 223, 0.842);
   border-bottom: 1px solid var(--BORDER-COLOR);
   padding: 1.2rem;
 }
@@ -205,9 +211,9 @@ body {
 .portalBtn{
   background-color: #00b34b;
   color: white;
-  padding: 1rem;
-  height: 50px;
-  width: 150px;
+  padding: 0.2rem;
+  height: 30px;
+  width: 40px;
   font-size: 1.5rem;
   border-radius: 1rem;
   border: none;
@@ -225,10 +231,53 @@ body {
   position: relative;
   background-image: url("assets/images/background.jpg");
   background-size: cover;
+  background-repeat: repeat-x;
   height: 50vh;
   z-index: -1;
 }
 
+/* the  header NAV styling */
+
+li > a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul{
+  list-style-type: none;
+}
+
+.header-nav > nav {
+  width: 100%;
+}
+
+.header-nav > nav > ul {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  height: 100%;
+  gap: 1rem;
+}
+
+.header-nav > nav > ul > li > a{
+  font-size: 1.5rem;
+}
+
+.header-nav > nav > ul > li{
+  font-weight: bold;
+  color: white;
+  transition: color 1s ease-in-out;
+}
+
+.header-nav > nav > ul > li:hover{
+  color: blue;
+}
+
+#logo{
+  width: 200px;
+  margin-left: 50px;
+}
+/* =================================================================== */
 
 
 .overlay {
@@ -455,6 +504,7 @@ body {
 .app{
   display: flex;
   height: 100vh;
+  min-width: 350px;
 }
 
 .dash-container{
@@ -1474,4 +1524,439 @@ hr{
 @keyframes blink-caret {
   from, to { border-color: transparent }
   50% { border-color: transparent; }
+}
+/*=================================== css for home header screen ============================ */
+.menu_button {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+
+
+@media (max-width: 991.98px) {
+  /*=================================== css for home header screen ============================ */
+  .header-nav {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: rgb(143, 218, 253);
+    position: absolute;
+    top: 10vh;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
+
+  .header-nav.open-nav {
+    display: flex;
+  }
+
+  .header-nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header-nav ul li {
+    margin: 10px 0;
+  }
+
+  .menu_button {
+    display: block;
+  }
+
+  .home_header {
+    position: relative;
+  }
+}
+
+/* Extra Small Devices (Phones) */
+@media (min-width: 350px) and (max-width: 500px) {
+  /* ========================================home page css =============================== */
+  .two_side_grid{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .home_header{
+    height: 13vh;
+  }
+
+  .overlay{
+    height: 45vh;
+  }
+
+  .content{
+    height: 45vh;
+  }
+
+  .second_header{
+    height: 45vh;
+  }
+
+  .home-image{
+    width: 150px;
+    height: 150px;
+    margin-right: 0;
+  }
+  
+  .home_h1{
+    font-size: 1.1rem;
+  }
+
+  h2{
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .blue_color_h1{
+    font-size: 1.1rem;
+    
+  }
+
+  .mission_tile{
+    width: 21vw;
+    height: 10vh;
+  }
+
+  .mission_tile-icon{
+    font-size: 1.3rem;
+  }
+
+  .mission_tile-title{
+    font-size: 0.7rem;
+  }
+
+  .section_sub_container{
+    width: 90vw;
+  }
+
+  .section_intro_head{
+    width: 57vw;
+  }
+
+  .paragraph{
+    font-size: 1.1rem;
+  }
+
+  .objective_tile{
+    width: 80vw;
+    padding: 0.5rem;
+  }
+
+  .profile-name{
+    font-size: 1rem;
+  }
+
+  .profile-position{
+    font-size: 0.8rem;
+  }
+
+  /* login page css  */
+  .login_container{
+    width: 90vw;
+    height: 65vh;
+  }
+
+  .check{
+    width: 35vw;
+  }
+}
+
+@media (min-width: 500px) and (max-width: 700px) {
+  /* ========================================home page css =============================== */
+  .home-image{
+    width: 170px;
+    height: 170px;
+    margin-right: 1rem;
+  }
+  
+  .second_header{
+    height: 23vh;
+  }
+  .home_h1{
+    font-size: 0.8rem;
+  }
+
+  h2{
+    font-size: 0.8rem;
+    text-align: center;
+  }
+
+  .blue_color_h1{
+    font-size: 1rem;
+    
+  }
+
+  .two_side_grid{
+    grid-template-columns: 1fr;
+    place-items: center;
+  }
+
+  .mission_tile{
+    width: 19vw;
+    height: 13vh;
+  }
+
+  .mission_tile-icon{
+    font-size: 1.5rem;
+  }
+
+  .mission_tile-title{
+    font-size: 0.8rem;
+  }
+
+  .section_sub_container{
+    width: 70vw;
+  }
+
+  .section_intro_head{
+    width: 50vw;
+  }
+
+  .paragraph{
+    font-size: 1.1rem;
+  }
+
+  .objective_tile{
+    width: 70vw;
+    padding: 0.5rem;
+  }
+
+  
+
+  /* login page css  */
+  .login_container{
+    width: 70vw;
+  }
+
+  .check{
+    width: 27vw;
+  }
+}
+
+/* Small Devices (Tablets) */
+@media (min-width: 700px) and (max-width: 850px) {
+  /* ========================================home page css =============================== */
+  .home-image{
+    width: 170px;
+    height: 170px;
+    margin-right: 1rem;
+  }
+  
+  .second_header{
+    height: 23vh;
+  }
+  .home_h1{
+    font-size: 1.49rem;
+  }
+
+  h2{
+    font-size: 1rem;
+  }
+
+  .blue_color_h1{
+    font-size: 1.5rem;
+  }
+
+  .two_side_grid{
+    grid-template-columns: 1fr;
+    place-items: center;
+  }
+
+  .mission_tile{
+    width: 21vw;
+    height: 17vh;
+  }
+
+  .mission_tile-icon{
+    font-size: 2rem;
+  }
+
+  .mission_tile-title{
+    font-size: 1.1rem;
+  }
+
+  .section_sub_container{
+    width: 70vw;
+  }
+
+  .section_intro_head{
+    width: 50vw;
+  }
+
+  .paragraph{
+    font-size: 1.1rem;
+  }
+
+  .objective_tile{
+    width: 60vw;
+    padding: 0.5rem;
+  }
+
+  
+
+  /* login page css  */
+  .login_container{
+    width: 50vw;
+  }
+
+  .check{
+    width: 20vw;
+  }
+}
+
+/* Medium Devices (Small Laptops) */
+@media (min-width: 850px) and (max-width: 1037px) {
+  /* ========================================home page css =============================== */
+  .home-image{
+    width: 245px;
+    height: 245px;
+  }
+  
+  .second_header{
+    height: 31vh;
+  }
+  .home_h1{
+    font-size: 1.49rem;
+  }
+
+  h2{
+    font-size: 1rem;
+  }
+
+  .blue_color_h1{
+    font-size: 1.5rem;
+  }
+
+  .mission_tile{
+    width: 21vw;
+  }
+
+  .mission_tile-icon{
+    font-size: 2rem;
+  }
+
+  .mission_tile-title{
+    font-size: 1.4rem;
+  }
+
+  .paragraph{
+    font-size: 1.1rem;
+  }
+
+  .objective_tile{
+    width: 36vw;
+    padding: 0.5rem;
+  }
+
+  /* login page css  */
+  .login_container{
+    width: 50vw;
+  }
+
+  .check{
+    width: 20vw;
+  }
+}
+
+/* Large Devices (Desktops) */
+@media (min-width: 1037px) and (max-width: 1256px) {
+  /* ========================================home page css =============================== */
+  .home-image{
+    width: 300px;
+    height: 300px;
+  }
+  
+  .second_header{
+    height: 35vh;
+  }
+  .home_h1{
+    font-size: 2rem;
+  }
+
+  h2{
+    font-size: 1rem;
+  }
+
+  .blue_color_h1{
+    font-size: 1.5rem;
+  }
+
+  .mission_tile{
+    width: 20vw;
+  }
+
+  .mission_tile-icon{
+    font-size: 2rem;
+  }
+
+  .mission_tile-title{
+    font-size: 1.4rem;
+  }
+
+  .paragraph{
+    font-size: 1.1rem;
+  }
+
+  .objective_tile{
+    width: 35vw;
+    padding: 0.5rem;
+  }
+
+  /*========================================== login page css ==========================================  */
+  .login_container{
+    width: 40vw;
+  }
+
+  .check{
+    width: 15vw;
+  }
+}
+
+/* Extra Large Devices (Large Desktops) */
+@media (min-width: 1256px) and (max-width: 1480px) {
+  /* ========================================home page css =============================== */
+  .home_h1{
+    font-size: 2.5rem;
+  }
+
+  h2{
+    font-size: 1.5rem;
+  }
+
+  .blue_color_h1{
+    font-size: 2rem;
+  }
+
+  .mission_tile{
+    width: 25vw;
+  }
+
+  .mission_tile-icon{
+    font-size: 2.5rem;
+  }
+
+  .mission_tile-title{
+    font-size: 2rem;
+  }
+}
+
+
+
+/* media queries for mobile devices screens  */
+@media (max-width: 390) {
+  /*=================================== css for home header screen ============================ */
+  .home-image{
+    margin-right: 0;
+    width: 100px;
+    height: 100px;
+  }
+
+  
 }

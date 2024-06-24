@@ -40,7 +40,11 @@ const Home = () => {
   ];
   return (
     <main>
-      <section className="second_header">
+      <a href="#header" className="ai-chat-button">
+        UP
+      </a>
+
+      <section id="header" className="second_header">
         <div className="overlay"></div>
         <div className="content two_side_grid">
           <div className="content_container gap">
@@ -51,7 +55,8 @@ const Home = () => {
           <LazyLoadImage src={logo} className="home-image" alt="" />
         </div>
       </section>
-      <section className="content_container">
+
+      <section id="aboutus" className="content_container">
         <div className="mission_container">
           <MissionTile
             icon={<FaPersonShelter />}
@@ -95,7 +100,8 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className="content_container">
+
+      <section id="objectives" className="content_container">
         <div className="two_side_grid gap">
           <div className="content_container gap">
             <SectionIntroTile title={"Our Objectives"} />
@@ -116,21 +122,22 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className="content_container">
-        <SectionIntroTile title={"Our Numbers"} />
-        <div className="mission_container">
-          <MissionTile
-            icon={<FaBook />}
-            title={"3+ Exams"}
-          />
-          <MissionTile icon={<AiFillBook  />} title={"20+ Courses"} />
-          <MissionTile
-            icon={<RiQuestionnaireLine />}
-            title={"300+ Questions"}
-          />
-        </div>
+
+      <section id="numbers" className="content_container">
+        
+          <SectionIntroTile title={"Our Numbers"} />
+          <div className="mission_container">
+            <MissionTile icon={<FaBook />} title={"3+ Exams"} />
+            <MissionTile icon={<AiFillBook />} title={"20+ Courses"} />
+            <MissionTile
+              icon={<RiQuestionnaireLine />}
+              title={"300+ Questions"}
+            />
+          </div>
+        
       </section>
-      <section className="content_container">
+
+      <section id="team" className="content_container">
         <SectionIntroTile title={"Our Team"} />
         <div>
           <ProfileTile profiles={profiles} />

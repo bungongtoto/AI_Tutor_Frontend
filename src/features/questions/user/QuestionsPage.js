@@ -60,12 +60,13 @@ const QuestionsPage = ({ questions }) => {
               className="text"
               math={getHtmlContent(questions[currentIndex].text)}
             />
-          </div>
-          {/* <div
+             {/* <div
             dangerouslySetInnerHTML={{
               __html: getHtmlContent(questions[currentIndex].text),
             }}
           /> */}
+          </div>
+         
         </div>
         <div className="answer">
           <h2>Answer</h2>

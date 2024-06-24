@@ -4,9 +4,9 @@ import { FaPhoneAlt } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="home_footer">
+    <footer id="footer" className="home_footer">
       <div className="home_footer_container">
-        <h1>Contact Us</h1>
+        <h1 className="blue_color_h1">Contact Us</h1>
         <div className="contact-tile">
           <FaEnvelope className="contact-icon" />
           <span>info.contact@aitutor.com</span>
