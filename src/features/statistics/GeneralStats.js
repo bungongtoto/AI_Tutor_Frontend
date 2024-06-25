@@ -123,7 +123,7 @@ const GeneralStats = () => {
     numEnrollments = enrollmentIds?.length;
   }
   return (
-    <div className="mission_container">
+    <div className="general_stats_container">
       {isAdmin && <StatTile title="Users" icon={<FaUsers />} number={numUsers} />}
       <StatTile title="Exams" icon={<FaBook />} number={numExams} />
       <StatTile title="Courses" icon={<AiFillBook />} number={numCourses} />

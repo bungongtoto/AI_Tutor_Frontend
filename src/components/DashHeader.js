@@ -22,7 +22,7 @@ const DashHeader = () => {
   return (
     <header className="dash_header">
     {isError ? <p className={errClass}>{error?.data?.message}</p> && enqueueSnackbar("Logout errro", { variant: "error" }) : <></>}
-    <p>User: {email} </p>
+    <p className="header-email">{email} </p>
       {isLoading ? (
         <PulseLoader color={"blue"} />
       ) : (
