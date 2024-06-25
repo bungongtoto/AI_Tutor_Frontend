@@ -3,7 +3,7 @@ import { useGetExamsQuery } from "../examsApiSlice";
 import useAuth from "../../../hooks/useAuth";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import logo from "../../../assets/images/baby_edu_lion.png";
+import logo from "../../../assets/images/achievementPage_lion.png";
 import { PulseLoader } from "react-spinners";
 import ExamTile from "./ExamTile";
 import HeadingTile from "../../../components/HeadingTile";
@@ -42,14 +42,14 @@ const ExamPage = () => {
       <div className="content_container">
         <HeadingTile title={"AI Tutor's Exams Page"} />
         <div className="two_side_grid">
-          <div className="content_container">
+          <div className="content_container gap">
             <h1 className="blue_color_h1">Hello ...</h1>
-            <p>User: {email}.</p>
-            <h2>To AI Tutor</h2>
+            <h2>User: {email}.</h2>
+            <h2>AI Tutor Exams</h2>
           </div>
           <LazyLoadImage
             src={logo}
-            className="floating-image"
+            className="floating-image home-image"
             width={"359px"}
             height={"550px"}
             alt=""

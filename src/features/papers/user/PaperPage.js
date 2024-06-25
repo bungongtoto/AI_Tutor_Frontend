@@ -64,7 +64,7 @@ const PaperPage = () => {
           </div>
           <LazyLoadImage
             src={logo}
-            className="floating-image"
+            className="floating-image home-image"
             width={"400px"}
             height={"490px"}
             alt=""

@@ -29,7 +29,7 @@ const Admin = () => {
         <HeadingTile title={"Welcome To The Admin's Dashboard"} />
         <GeneralStats />
 
-        <div className="admin_2nd_container">
+        <div className="two_side_grid">
           <div className="admin_nav_container">
             <AdminNavTile
               title={"Users"}

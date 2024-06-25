@@ -15,7 +15,7 @@ const ChatTile = ({ message }) => {
         src={message.isBot ? aiTutor : userIcon}
         alt=""
       />
-      <MathJax className="text" math={message.text} />
+      <MathJax className="ai-text" math={message.text} />
       
     </div>
   );

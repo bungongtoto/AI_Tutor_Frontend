@@ -101,7 +101,7 @@ const AIContainer = ({ closeSidebar, question }) => {
             <div className="upperside">
               <LazyLoadImage
                 src={logo}
-                className="floating-image"
+                className="floating-image logo-image"
                 width={"150px"}
                 height={"50px"}
                 alt=""

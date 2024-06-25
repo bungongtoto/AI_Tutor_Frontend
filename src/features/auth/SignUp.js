@@ -129,11 +129,6 @@ const SignUp = () => {
             <button type="submit" className="login-button">
               Sign Up
             </button>
-            {/* <p>OR</p>
-        <div>
-          <LazyLoadImage className="hover-effect" src={gmail_logo} width={50} height={50} alt="" />
-        </div> */}
-
             <p>
               Already have an account ? <Link to={"/auth/"}>Login</Link>
             </p>

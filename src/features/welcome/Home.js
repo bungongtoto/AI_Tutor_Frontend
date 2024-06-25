@@ -46,7 +46,7 @@ const Home = () => {
 
       <section id="header" className="second_header">
         <div className="overlay"></div>
-        <div className="content two_side_grid">
+        <div className="home-content two_side_grid">
           <div className="content_container gap">
             <h1 className="home_h1">Beyond Borders Beyond Biases</h1>
             <h1 className="blue_color_h1">AI TUTOR</h1>
@@ -106,9 +106,9 @@ const Home = () => {
           <div className="content_container gap">
             <SectionIntroTile title={"Our Objectives"} />
             <div className="content_container gap section_sub_container">
-              <ObjectiveTile />
-              <ObjectiveTile />
-              <ObjectiveTile />
+              <ObjectiveTile number={"1"} title={"Personalised Learning"} objective={"The objective of AI tutors is to provide personalized learning experiences. This is achieved by leveraging AI to assess a student's strengths and weaknesses, then dynamically adjusting the learning materials and approaches to best suit the individual's needs. This fosters deeper understanding, improves engagement, and ultimately aims to optimize educational outcomes. "} />
+              <ObjectiveTile number={"2"} title={"Adaptive Instructions"} objective={"The objective of adaptive instruction is to dynamically adjust the learning process based on a student's performance. By constantly evaluating understanding through quizzes, exercises, or other assessments, adaptive instruction can identify areas of difficulty and provide targeted support. Conversely, it can present more challenging material for students who are demonstrating proficiency. This ensures an optimal learning environment where students are neither overwhelmed nor underchallenged, leading to more efficient and effective knowledge acquisition. "} />
+              <ObjectiveTile number={"3"} title={"Impact Performance"} objective={"The goal of measuring AI tutor performance impact is to quantify how well the personalized learning experience improves student outcomes. This involves tracking knowledge gain, engagement, confidence, and completion rates to see if the AI tutor effectively helps students learn and achieve their goals.   "} />
             </div>
           </div>
           <div className="center">
