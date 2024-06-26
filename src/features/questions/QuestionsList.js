@@ -225,7 +225,7 @@ const QuestionsList = () => {
                   value={selectedPaper}
                   onChange={handlePaperChange}
                 >
-                  <option>Select A Course</option>
+                  <option>Select A Paper</option>
                   {papersListOptions}
                 </select>
               </div>
