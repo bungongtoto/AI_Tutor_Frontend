@@ -40,16 +40,16 @@ const Achievement = () => {
           <div className="content_container">
             <HeadingTile title={"Your Achievement Page"} />
             <div className="two_side_grid">
-              <div className="content_container">
+              <div className="content_container gap">
                 <h1 className="blue_color_h1">
                   Hello Welcome...
                 </h1>
-                <p>User: {email}.</p>
+                <h2>User: {email}.</h2>
                 <h2>To Your Achievements</h2>
               </div>
               <LazyLoadImage
                 src={logo}
-                className="floating-image"
+                className="floating-image home-image"
                 width={"400px"}
                 height={"490px"}
                 alt=""
